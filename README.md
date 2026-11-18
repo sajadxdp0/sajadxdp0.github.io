@@ -5,7 +5,7 @@ Personal portfolio site for Sajad, served directly from `main` via GitHub Pages 
 ## Structure
 
 - `index.html` — About & engineering focus
-- `projects.html` — Selected systems and product work (Lexora, HookFlow, EsenceLab, neuDB)
+- `projects.html` — Selected systems and product work, plus foundations (Lexora, HookFlow, EsenceLab, neuDB, spam-classifier, dsa-practice)
 - `contact.html` — Direct contact links with progressive-enhancement email copy
 - `style.css` & `script.js` — Dark-only minimal stylesheet and zero-dependency enhancements
 
