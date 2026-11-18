@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sajadxdp.github.io/sitemap.xml
+Sitemap: https://sajadxdp0.github.io/sitemap.xml

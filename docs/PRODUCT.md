@@ -1,7 +1,7 @@
 # Portfolio Site
 
-> Maintainer doc. Static site, hosted by GitHub Pages at sajadxdp.github.io.
-> Codebase: `~/sajadxdp.github.io` | Stack: vanilla HTML + CSS + JS, no build.
+> Maintainer doc. Static site, hosted by GitHub Pages at sajadxdp0.github.io.
+> Codebase: `~/sajadxdp0.github.io` | Stack: vanilla HTML + CSS + JS, no build.
 
 ## 1. What this product is
 
@@ -15,7 +15,7 @@ LinkedIn / email contact. No blog, no feed, no archive, no subpages.
 - Three pages: `index.html` (the About page), `projects.html`,
   `contact.html`. No 404 page, no project subdirectories. Every
   project title links its GitHub repo directly.
-- `style.css` (edition 9, dark-only charcoal: bg `#141516`, text `#c9cdd2`,
+- `style.css` (edition 10, dark-only charcoal: bg `#141516`, text `#c9cdd2`,
   bright `#e9ecef`, muted `#8e9399`, accent `#e0855a`; 50rem document
   column, 40rem read column, flat title rows with dashed rules,
   fluid gutter and h1, centered footer, zero animations)
@@ -27,7 +27,7 @@ LinkedIn / email contact. No blog, no feed, no archive, no subpages.
 
 ### Serve locally
 ```bash
-python3 -m http.server -d ~/sajadxdp.github.io 8000
+python3 -m http.server -d ~/sajadxdp0.github.io 8000
 ```
 
 ### Edit content
