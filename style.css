@@ -1,4 +1,4 @@
-/* sajadxdp0.github.io - edition 13, black and white.
+/* sajadxdp0.github.io - edition 14, black and white.
    One black ground, white text, greys for everything quiet.
    The dithered cloud band is the only illustration; it lives behind
    the landing copy and fades into the ground at both edges.
@@ -96,22 +96,12 @@ header.site-header {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: .65rem;
   color: var(--paper);
   flex: none;
 }
 
-.mark { display: inline-flex; color: var(--accent); }
+.mark { display: inline-flex; color: var(--paper); }
 .mark svg { display: block; }
-a.mark:hover { color: var(--accent-bright); }
-
-.brand-name {
-  font: 400 .95rem/1.3 var(--mono);
-  letter-spacing: -.04em;
-  color: var(--paper);
-}
-
-a.brand:hover .brand-name { color: var(--accent-bright); }
 
 nav[aria-label="Primary"] {
   display: flex;
@@ -192,7 +182,8 @@ strong { color: var(--paper); font-weight: 600; }
 .hero .role {
   color: var(--paper);
   font-size: 1.15rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: var(--read);
   margin: 0 0 2.5rem;
 }
 
@@ -201,25 +192,6 @@ strong { color: var(--paper); font-weight: 600; }
   font: 400 .8rem/1.7 var(--mono);
   max-width: var(--read);
   margin: 0;
-}
-
-/* ---- landing: a short about block under the hero ---- */
-
-.about { padding-top: 2.6rem; }
-
-.about h2 {
-  font: 400 .8rem/1.5 var(--mono);
-  letter-spacing: -.01em;
-  color: var(--dim);
-}
-
-.about h2 .arrow { color: var(--paper); margin-right: .5rem; }
-
-.about p {
-  color: var(--paper-soft);
-  max-width: var(--read);
-  margin: 1rem 0 0;
-  line-height: 1.75;
 }
 
 /* ---- interior page headings ---- */
@@ -365,7 +337,7 @@ footer a:hover { color: var(--paper); }
   :root { color-scheme: light; }
   body { background: #fff; color: #111; }
   .hero::before { display: none; }
-  a, h1, .brand, .brand-name, .row-title, .links-line, footer { color: inherit; }
+  a, h1, .brand, .row-title, .links-line, footer { color: inherit; }
   a { text-decoration: underline; }
   .skip-link, .copy-btn { display: none; }
 }
