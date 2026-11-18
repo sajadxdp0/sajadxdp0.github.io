@@ -15,10 +15,10 @@ LinkedIn / email contact. No blog, no feed, no archive, no subpages.
 - Three pages: `index.html` (the About page), `projects.html`,
   `contact.html`. No 404 page, no project subdirectories. Every
   project title links its GitHub repo directly.
-- `style.css` (edition 11, dark only: ink `#0c0c0d`, paper `#f0eded`,
-  dim `#a1989a`, oxide accent `#d16c75`, hairlines `#32292c`/`#221e20`;
-  62rem document column, 42rem read column, flat title rows,
-  mono meta text, no animation)
+- `style.css` (edition 12, black and white only: ground `#0a0a0a`,
+  paper `#f5f5f5`, greys `#bcbcbc`/`#8a8a8a`, hairlines `#2a2a2a`/`#1f1f1f`;
+  62rem document column, 42rem read column, numbered flat title rows,
+  mono meta text, no looping motion)
 - `assets/clouds.png` — ordered-dither cloud band, used only behind the
   landing copy and faded out at both edges with mask gradients
 - `script.js` (footer year, active-nav marking, mailto copy button)
