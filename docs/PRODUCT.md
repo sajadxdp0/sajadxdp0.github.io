@@ -46,7 +46,7 @@ Push `main` → GitHub Pages serves the repo root. Verify: `/sitemap.xml`,
 - No env, no health endpoint (static). Monitor via Pages status + manual
   link check.
 - Keep `sitemap.xml` `lastmod` in sync when a page's content changes
-  (currently 2026-11-13).
+  (currently 2026-11-18).
 - The verification harness (check, smoke, contrast, responsive, live-audit
   scripts) lives outside the repo in `~/shots/pf-harness/`.
 - Roadmap: link-check CI, HTML validator run. Both are dev-time only; the
@@ -57,5 +57,5 @@ Push `main` → GitHub Pages serves the repo root. Verify: `/sitemap.xml`,
 ```bash
 python3 -m http.server -d . 8000
 ```
-Then check `/`, `/about.html`, `/projects.html`, `/contact.html`,
+Then check `/`, `/projects.html`, `/contact.html`,
 `/sitemap.xml`.

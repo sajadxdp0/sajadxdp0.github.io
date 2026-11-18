@@ -7,7 +7,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#141516">
 <title>Projects · Sajad</title>
-<meta name="description" content="Selected projects by Sajad: backend systems, an applied ML baseline, and a tested DSA practice set.">
+<meta name="description" content="Selected projects by Sajad: Lexora, HookFlow, EsenceLab, and neuDB.">
 <meta name="author" content="Abdulla Sajad">
 <link rel="canonical" href="https://sajadxdp0.github.io/projects.html">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sajad">
 <meta property="og:title" content="Projects · Sajad">
-<meta property="og:description" content="Selected projects by Sajad: backend systems, an applied ML baseline, and a tested DSA practice set.">
+<meta property="og:description" content="Selected projects by Sajad: Lexora, HookFlow, EsenceLab, and neuDB.">
 <meta property="og:image" content="https://sajadxdp0.github.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -40,38 +40,23 @@
 <ul class="rows">
   <li class="row">
     <a class="row-title" href="https://github.com/sajadxdp0/lexora-ai">Lexora</a>
-    <p>Document Q&amp;A backend with cited sources. Uploads are validated, chunked, and embedded into per-user FAISS indexes so queries never cross tenants; ingestion runs through Celery, retrieval is cached in Redis, and answers stream over SSE alongside the chunks that grounded them.</p>
-    <p class="links-line">python&nbsp;· fastapi&nbsp;· postgresql&nbsp;· redis&nbsp;· celery&nbsp;· faiss&nbsp;· 35 tests</p>
+    <p>Document Q&amp;A with cited sources. Per-user FAISS indexes, Celery ingestion, Redis caching, and SSE streaming.</p>
+    <p class="links-line">python&nbsp;· fastapi&nbsp;· postgresql&nbsp;· redis&nbsp;· celery&nbsp;· faiss</p>
   </li>
   <li class="row">
     <a class="row-title" href="https://github.com/sajadxdp0/hookflow">HookFlow</a>
-    <p>Persist-first webhook delivery. Events and delivery rows commit before any dispatch attempt; workers claim due rows with expiring leases (<code>FOR UPDATE SKIP LOCKED</code>), sign payloads with HMAC-SHA256, and retry with exponential backoff before moving exhausted deliveries to a replayable dead-letter queue.</p>
-    <p class="links-line">python&nbsp;· fastapi&nbsp;· postgresql&nbsp;· redis&nbsp;· next.js&nbsp;· 79 tests&nbsp;· 93% coverage</p>
+    <p>Persist-first webhook delivery with idempotent ingest, leased workers, HMAC-signed payloads, exponential backoff, and a replayable dead-letter queue.</p>
+    <p class="links-line">python&nbsp;· fastapi&nbsp;· postgresql&nbsp;· redis&nbsp;· next.js</p>
   </li>
   <li class="row">
     <a class="row-title" href="https://github.com/sajadxdp0/esencelab">EsenceLab</a>
-    <p>Multi-service hiring platform across a Next.js frontend, an Express API with JWT auth and gated recruiter RBAC, and a FastAPI service for PDF resume parsing and job matching. Scoring is deterministic first (skill overlap + TF-IDF) with an optional LLM assist and local fallback.</p>
-    <p class="links-line">typescript&nbsp;· next.js&nbsp;· express&nbsp;· fastapi&nbsp;· postgresql&nbsp;· docker</p>
+    <p>Hiring platform across Next.js, Express, and FastAPI, with JWT authentication, role-based access, PDF resume parsing, and deterministic skill matching.</p>
+    <p class="links-line">typescript&nbsp;· next.js&nbsp;· express&nbsp;· fastapi&nbsp;· postgresql</p>
   </li>
   <li class="row">
     <a class="row-title" href="https://github.com/sajadxdp0/neudb">neuDB</a>
-    <p>Zero-dependency embedded database in pure Python. Each table is a human-readable JSON file, writes are crash-atomic (temp file, <code>fsync</code>, atomic replace), and text and cosine similarity search run in the standard library—with the ~10K-row-per-table ceiling stated up front.</p>
-    <p class="links-line">python&nbsp;· stdlib only&nbsp;· 32 tests&nbsp;· <a href="https://sajadxdp0.github.io/neudb/">promo site</a></p>
-  </li>
-</ul>
-
-<h2>Foundations</h2>
-
-<ul class="rows">
-  <li class="row">
-    <a class="row-title" href="https://github.com/sajadxdp0/spam-classifier">Spam Classifier</a>
-    <p>End-to-end text classification with a leakage-aware split: duplicate messages are removed before the train/test cut, three models are compared by 5-fold cross-validation, and the winner is evaluated once on 1,032 held-out messages. Reaches 0.937 F1 with calibrated probabilities and a one-message CLI.</p>
-    <p class="links-line">python&nbsp;· scikit-learn&nbsp;· tf-idf&nbsp;· 9 tests&nbsp;· <a href="https://github.com/sajadxdp0/spam-classifier#results">results</a></p>
-  </li>
-  <li class="row">
-    <a class="row-title" href="https://github.com/sajadxdp0/dsa-practice">DSA Practice</a>
-    <p>Forty solutions across twelve patterns, organized for recall rather than volume. Each file names the source problem, states the approach and complexity, and is covered by a test; CI runs the suite on Python 3.10 and 3.12.</p>
-    <p class="links-line">python&nbsp;· arrays&nbsp;· graphs&nbsp;· dynamic programming&nbsp;· 40 tests</p>
+    <p>Embedded Python database with human-readable JSON tables, crash-atomic writes, and text and cosine search.</p>
+    <p class="links-line">python&nbsp;· stdlib only&nbsp;· <a href="https://sajadxdp0.github.io/neudb/">promo site</a></p>
   </li>
 </ul>
 </main>
