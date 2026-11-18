@@ -1,7 +1,7 @@
 # Portfolio Site
 
 > Maintainer doc. Static site, hosted by GitHub Pages at sajadxdp0.github.io.
-> Codebase: `~/sajadxdp0.github.io` | Stack: vanilla HTML + CSS + JS, no build.
+> Codebase: `~/github-migration/site` | Stack: vanilla HTML + CSS + JS, no build.
 
 ## 1. What this product is
 
