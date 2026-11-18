@@ -1,18 +1,17 @@
-# Portfolio site
+# Portfolio (`sajadxdp0.github.io`)
 
-Personal portfolio for Sajad, served from the `main` branch by GitHub Pages at https://sajadxdp0.github.io/.
+Personal portfolio site for Sajad, served directly from `main` via GitHub Pages at <https://sajadxdp0.github.io/>.
 
-## Pages
+## Structure
 
-- `index.html` — about
-- `projects.html` — selected work
-- `contact.html` — contact links
+- `index.html` — About & engineering focus
+- `projects.html` — Selected systems and product work (Lexora, HookFlow, EsenceLab, neuDB)
+- `contact.html` — Direct contact links with progressive-enhancement email copy
+- `style.css` & `script.js` — Dark-only minimal stylesheet and zero-dependency enhancements
 
-## Development
+## Local preview
 
-No build step and no framework. Edit a file and push `main`; Pages republishes the site.
-
-To preview locally:
+No build step or framework. Serve the directory with any static file server:
 
 ```bash
 python3 -m http.server 8000
@@ -20,4 +19,4 @@ python3 -m http.server 8000
 
 ## Documentation
 
-[Product notes](docs/PRODUCT.md)
+[Maintainer notes](docs/PRODUCT.md)

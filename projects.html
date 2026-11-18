@@ -7,7 +7,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#141516">
 <title>Projects · Sajad</title>
-<meta name="description" content="Projects: Lexora, EsenceLab, HookFlow, neuDB. Backend systems and applied AI.">
+<meta name="description" content="Selected projects by Sajad: Lexora, HookFlow, EsenceLab, and neuDB. Backend operations and applied AI.">
 <meta name="author" content="Abdulla Sajad">
 <link rel="canonical" href="https://sajadxdp0.github.io/projects.html">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -15,11 +15,11 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sajad">
 <meta property="og:title" content="Projects · Sajad">
-<meta property="og:description" content="Projects: Lexora, EsenceLab, HookFlow, neuDB. Backend systems and applied AI.">
+<meta property="og:description" content="Selected projects by Sajad: Lexora, HookFlow, EsenceLab, and neuDB. Backend operations and applied AI.">
 <meta property="og:image" content="https://sajadxdp0.github.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Sajad. I write the backends behind AI products.">
+<meta property="og:image:alt" content="Sajad. Software engineer focused on backend operations and AI products.">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
@@ -40,23 +40,23 @@
 <ul class="rows">
   <li class="row">
     <a class="row-title" href="https://github.com/sajadxdp0/lexora-ai">Lexora</a>
-    <p>Ask questions over your own documents and get answers with the source chunks cited. Validated uploads, per-user vectors, cached retrieval, and streaming responses.</p>
+    <p>Document Q&amp;A backend with cited sources. Uploads are validated, chunked, and embedded into per-user FAISS indexes so queries never cross tenants; ingestion runs through Celery, retrieval is cached in Redis, and answers stream over SSE alongside the chunks that grounded them.</p>
     <p class="links-line">python&nbsp;· fastapi&nbsp;· postgresql&nbsp;· redis&nbsp;· celery&nbsp;· faiss&nbsp;· 35 tests</p>
   </li>
   <li class="row">
-    <a class="row-title" href="https://github.com/sajadxdp0/esencelab">EsenceLab</a>
-    <p>Resume parsing, skill matching, and recruiter shortlists. A Next.js frontend, an RBAC API, and a Python scoring service.</p>
-    <p class="links-line">typescript&nbsp;· express&nbsp;· next.js&nbsp;· fastapi&nbsp;· supabase&nbsp;· docker</p>
+    <a class="row-title" href="https://github.com/sajadxdp0/hookflow">HookFlow</a>
+    <p>Persist-first webhook delivery. Events and delivery rows commit before any dispatch attempt; workers claim due rows with expiring leases (<code>FOR UPDATE SKIP LOCKED</code>), sign payloads with HMAC-SHA256, and retry with exponential backoff before moving exhausted deliveries to a replayable dead-letter queue.</p>
+    <p class="links-line">python&nbsp;· fastapi&nbsp;· postgresql&nbsp;· redis&nbsp;· next.js&nbsp;· 79 tests&nbsp;· 93% coverage</p>
   </li>
   <li class="row">
-    <a class="row-title" href="https://github.com/sajadxdp0/hookflow">HookFlow</a>
-    <p>Events are persisted before delivery, then sent signed with backoff and idempotency keys. Failed deliveries land in a replayable dead-letter queue.</p>
-    <p class="links-line">python&nbsp;· fastapi&nbsp;· postgresql&nbsp;· redis&nbsp;· 79 tests&nbsp;· 93% coverage</p>
+    <a class="row-title" href="https://github.com/sajadxdp0/esencelab">EsenceLab</a>
+    <p>Multi-service hiring platform across a Next.js frontend, an Express API with JWT auth and gated recruiter RBAC, and a FastAPI service for PDF resume parsing and job matching. Scoring is deterministic first (skill overlap + TF-IDF) with an optional LLM assist and local fallback.</p>
+    <p class="links-line">typescript&nbsp;· next.js&nbsp;· express&nbsp;· fastapi&nbsp;· postgresql&nbsp;· docker</p>
   </li>
   <li class="row">
     <a class="row-title" href="https://github.com/sajadxdp0/neudb">neuDB</a>
-    <p>Human-readable JSON tables, crash-atomic writes, and pure-Python search. No server, no dependencies, honest limits.</p>
-    <p class="links-line">python&nbsp;· stdlib only&nbsp;· 32 tests&nbsp;· ci</p>
+    <p>Zero-dependency embedded database in pure Python. Each table is a human-readable JSON file, writes are crash-atomic (temp file, <code>fsync</code>, atomic replace), and text and cosine similarity search run in the standard library—with the ~10K-row-per-table ceiling stated up front.</p>
+    <p class="links-line">python&nbsp;· stdlib only&nbsp;· 32 tests&nbsp;· <a href="https://sajadxdp0.github.io/neudb/">promo site</a></p>
   </li>
 </ul>
 </main>
