@@ -6,7 +6,7 @@
 ## 1. What this product is
 
 Personal portfolio for Sajad. The landing is the About page
-(Hi, I'm Sajad.); Projects (Lexora, EsenceLab, HookFlow, neuDB) and
+(Sajad.); Projects (Lexora, HookFlow, EsenceLab, neuDB) and
 Contact are the other two pages. Goal: bring visitors to GitHub /
 LinkedIn / email contact. No blog, no feed, no archive, no subpages.
 
@@ -27,12 +27,11 @@ LinkedIn / email contact. No blog, no feed, no archive, no subpages.
 
 ### Serve locally
 ```bash
-python3 -m http.server -d ~/sajadxdp0.github.io 8000
+python3 -m http.server -d ~/github-migration/site 8000
 ```
 
 ### Edit content
-- Hero opener is pinned: `Hi, I'm Sajad.` (the landing, which is the
-  About page).
+- Hero opener is the name `Sajad` (the landing, which is the About page).
 - Project blurbs: `projects.html` only (keep in sync with the
   GitHub profile README)
 - Styles/nav: `style.css`, each page's `<nav>`
