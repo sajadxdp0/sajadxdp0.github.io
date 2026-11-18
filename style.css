@@ -1,61 +1,58 @@
-/* sajadxdp0.github.io - edition 10, minimal, dark.
-   Bear-structured (pattern only): one centered document column,
-   flat title rows, dashed rules. The landing IS the About page;
-   Projects and Contact are the options. Dark only: no toggle, no
-   light room, no theme storage. Tokens only, system fonts only,
-   no frameworks, no build step, zero animations. */
+/* sajadxdp0.github.io - edition 11, dark.
+   One near-black ground, warm paper text, one oxide signal.
+   The dithered cloud band is the only illustration; it lives behind
+   the landing copy and fades into the ground at both edges.
+   Static HTML/CSS/JS, no build step, no frameworks, no looping motion. */
 
 :root {
-  --bg: #141516;
-  --text: #c9cdd2;
-  --bright: #e9ecef;
-  --muted: #8e9399;
-  --accent: #e0855a;
-  --border: #232629;
-  --border-strong: #34383c;
+  color-scheme: dark;
+  --bg: #0c0c0d;
+  --surface: #171516;
+  --paper: #f0eded;
+  --paper-soft: #bfb8ba;
+  --dim: #a1989a;
+  --line: #32292c;
+  --line-soft: #221e20;
+  --accent: #d16c75;
+  --accent-bright: #f0a1a7;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
-  --read: 40rem;
-  --gutter: clamp(1rem, 4vw, 1.4rem);
+  --content: 62rem;
+  --read: 42rem;
+  --gutter: clamp(1.25rem, 4vw, 2rem);
 }
 
 * { box-sizing: border-box; }
 
-html { color-scheme: dark; }
+html { background: var(--bg); }
 
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--text);
+  color: var(--paper-soft);
   font: 400 1rem/1.65 var(--sans);
   -webkit-text-size-adjust: 100%;
-  padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
+  padding-inline: var(--gutter);
 }
 
 ::selection { background: var(--accent); color: var(--bg); }
 
 a {
-  color: var(--bright);
+  color: inherit;
   text-decoration: none;
   overflow-wrap: anywhere;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
 
 a:hover { color: var(--accent); }
 
-/* inline links grow to a 24px+ touch target with no visual change
-   (vertical padding does not expand the line box) */
-main a { padding: .25em 0; }
-
-/* body-text links are underlined: color alone is not a link cue
-   (WCAG 1.4.1). Row titles keep their bold weight as the cue. */
-main p a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
+/* inline links get a small touch target without changing the line box */
+main p a { padding: .15em 0; }
 
 :focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .visually-hidden {
@@ -74,128 +71,220 @@ main p a {
 
 .skip-link:focus {
   position: fixed;
-  top: .8rem;
-  left: .8rem;
+  top: 1rem;
+  left: 1rem;
   z-index: 10;
-  background: var(--bright);
+  background: var(--paper);
   color: var(--bg);
-  padding: .5em .9em;
-  text-decoration: none;
+  padding: .6rem 1rem;
+  font: 400 .75rem/1.4 var(--mono);
 }
 
 /* ---- header ---- */
 
-header {
-  max-width: 50rem;
+header.site-header {
+  max-width: var(--content);
   margin: 0 auto;
-  padding-top: max(1.4rem, env(safe-area-inset-top));
+  padding: 1.6rem 0 1.4rem;
+  border-bottom: 1px solid var(--line);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: .4rem 1.2rem;
+  gap: .8rem 2rem;
 }
 
-.mark {
+.brand {
   display: inline-flex;
-  color: var(--bright);
+  align-items: center;
+  gap: .65rem;
+  color: var(--paper);
   flex: none;
 }
 
+.mark { display: inline-flex; color: var(--accent); }
 .mark svg { display: block; }
+a.mark:hover { color: var(--accent-bright); }
 
-a.mark:hover { color: var(--accent); }
-
-header nav[aria-label="Primary"] {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .2rem 1.05rem;
-  margin-left: auto;
-  font: 400 .78rem/1.7 var(--mono);
+.brand-name {
+  font: 400 .95rem/1.3 var(--mono);
+  letter-spacing: -.04em;
+  color: var(--paper);
 }
 
-nav[aria-label="Primary"] a { color: var(--muted); padding: .3em 0; }
+a.brand:hover .brand-name { color: var(--accent-bright); }
+
+nav[aria-label="Primary"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1.4rem;
+  margin-left: auto;
+  font: 400 .75rem/1.6 var(--mono);
+}
+
+nav[aria-label="Primary"] a { color: var(--dim); padding: .3em 0; }
 
 nav[aria-label="Primary"] a[aria-current="page"] {
+  color: var(--paper);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: var(--accent);
+  text-underline-offset: .55em;
 }
 
 nav[aria-label="Primary"] a:hover,
-nav[aria-label="Primary"] a[aria-current="page"] { color: var(--bright); }
+nav[aria-label="Primary"] a[aria-current="page"]:hover { color: var(--accent); }
 
 /* ---- page chassis ---- */
 
 main {
-  max-width: 50rem;
+  max-width: var(--content);
   margin: 0 auto;
-  padding: 3.2rem 0 max(4rem, env(safe-area-inset-bottom));
+  padding-bottom: 4rem;
 }
 
-h1 {
-  color: var(--bright);
-  font-weight: 600;
-  font-size: clamp(1.5rem, 1.25rem + 1.2vw, 1.7rem);
-  line-height: 1.25;
-  margin: 0 0 1rem;
+h1, h2 {
+  color: var(--paper);
+  font-weight: 400;
+  margin: 0;
 }
 
-h2 {
-  color: var(--bright);
-  font-weight: 600;
-  font-size: 1rem;
-  margin: 2.2rem 0 .6rem;
+p { margin: 0 0 1rem; }
+
+strong { color: var(--paper); font-weight: 600; }
+
+/* ---- landing: cloud band + three quiet lines ---- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 22rem;
+  padding: 3.4rem 0 3.2rem;
+  border-bottom: 1px solid var(--line);
 }
 
-p, ul, ol { margin: 0 0 1rem; }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url(./assets/clouds.png) no-repeat center top / 100% auto;
+  opacity: .9;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
+    linear-gradient(#0000, #000 14%, #000 84%, #0000);
+  mask-image:
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
+    linear-gradient(#0000, #000 14%, #000 84%, #0000);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
 
-li { margin-bottom: .3rem; }
+.hero h1 {
+  font-family: var(--mono);
+  font-size: clamp(2.4rem, 1.4rem + 4vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.06em;
+  margin: 0 0 2rem;
+  max-width: 12ch;
+}
 
-strong { color: var(--bright); font-weight: 600; }
+.hero .role {
+  color: var(--paper);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  margin: 0 0 2.5rem;
+}
 
-/* ---- flat title rows (the one list component, every page) ---- */
+.hero .stack {
+  color: var(--dim);
+  font: 400 .8rem/1.7 var(--mono);
+  max-width: var(--read);
+  margin: 0;
+}
+
+/* ---- interior page headings ---- */
+
+.page-head {
+  border-bottom: 1px solid var(--line);
+  padding: 2.6rem 0 1.3rem;
+  margin-bottom: .5rem;
+}
+
+.page-head h1 {
+  font: 400 1.45rem/1.3 var(--mono);
+  letter-spacing: -.04em;
+}
+
+.page-head h1 .arrow {
+  color: var(--accent);
+  margin-right: .6rem;
+}
+
+/* ---- flat title rows, the one list component ---- */
 
 ul.rows {
   list-style: none;
   margin: 0 0 2rem;
   padding: 0;
-  border-bottom: 1px dashed var(--border-strong);
+  border-bottom: 1px solid var(--line-soft);
 }
 
 .row {
-  border-top: 1px dashed var(--border-strong);
-  padding: .95rem 0 1rem;
+  border-top: 1px solid var(--line-soft);
+  padding: 1.25rem 0 1.35rem;
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: .35rem 2rem;
+  align-items: baseline;
 }
 
 .row-title {
-  color: var(--bright);
-  font-weight: 600;
+  color: var(--paper);
+  font: 400 1rem/1.4 var(--mono);
+  letter-spacing: -.02em;
 }
 
 .row-title:hover { color: var(--accent); }
 
-.row p {
-  margin: .25rem 0 0;
+.row > p:not(.links-line) {
+  margin: 0;
+  color: var(--paper-soft);
   font-size: .93rem;
+  line-height: 1.7;
+}
+
+.links-line {
+  grid-column: 2;
+  font: 400 .72rem/1.7 var(--mono);
+  color: var(--dim);
+  margin: .15rem 0 0;
+}
+
+.links-line a { text-decoration: underline; text-decoration-color: var(--line); }
+.links-line a:hover { text-decoration-color: var(--accent); }
+
+/* ---- contact lines ---- */
+
+.contact-lines {
+  padding-top: 2.2rem;
   max-width: var(--read);
 }
 
-/* ---- project meta line ---- */
-
-.links-line {
-  font: 400 .78rem/1.7 var(--mono);
-  color: var(--muted);
-  margin: .35rem 0 0;
-}
+.contact-lines p { color: var(--paper-soft); margin-bottom: 1.1rem; }
+.contact-lines a { color: var(--paper); text-decoration: underline; text-decoration-color: var(--line); }
+.contact-lines a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
 /* ---- copy email ---- */
 
 .copy-btn {
   font: 400 .7rem/1 var(--mono);
-  color: var(--muted);
+  color: var(--dim);
   background: transparent;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--line);
+  border-radius: 6px;
   padding: .5em .65em;
-  margin-left: .4rem;
+  margin-left: .5rem;
   cursor: pointer;
   vertical-align: middle;
 }
@@ -209,39 +298,30 @@ ul.rows {
 /* ---- footer ---- */
 
 footer {
-  max-width: 50rem;
+  max-width: var(--content);
   margin: 0 auto;
-  padding: 1rem 0 2.2rem;
-  border-top: 1px dashed var(--border-strong);
-  font: 400 .72rem/1.7 var(--mono);
-  color: var(--muted);
-  text-align: center;
+  padding: 1.2rem 0 2.2rem;
+  border-top: 1px solid var(--line);
+  font: 400 .7rem/1.6 var(--mono);
+  color: var(--dim);
 }
 
 footer p { margin: 0; }
 
-/* ---- motion, small screens ---- */
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+@media (max-width: 639px) {
+  .hero { min-height: 19rem; padding-top: 2.6rem; }
+  .hero::before { background-size: auto 100%; background-position: 70% top; }
+  .hero h1 { font-size: 2.4rem; }
+  nav[aria-label="Primary"] { gap: .3rem 1rem; font-size: .7rem; }
+  .row { grid-template-columns: 1fr; gap: .25rem; }
+  .links-line { grid-column: 1; }
 }
-
-@media (max-width: 539px) {
-  main { padding-top: 2.2rem; }
-  header { padding-top: max(1.1rem, env(safe-area-inset-top)); }
-  nav[aria-label="Primary"] {
-    font-size: .72rem;
-    gap: .15rem .8rem;
-  }
-}
-
-/* ---- print: paper and save-as-pdf get ink, not the dark room ---- */
 
 @media print {
   :root { color-scheme: light; }
   body { background: #fff; color: #111; }
-  a, h1, h2, strong, .row-title, .mark,
-  nav[aria-label="Primary"] a, .links-line, footer { color: inherit; }
-  a { text-decoration: underline; text-underline-offset: 2px; }
+  .hero::before { display: none; }
+  a, h1, .brand, .brand-name, .row-title, .links-line, footer { color: inherit; }
+  a { text-decoration: underline; }
   .skip-link, .copy-btn { display: none; }
 }
