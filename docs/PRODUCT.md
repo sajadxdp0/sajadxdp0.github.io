@@ -41,8 +41,11 @@ No blog, no feed, no archive, no subpages.
   text, `forced-colors: active` restores underlines on all links, and
   the meta type floor is 12px at every width. Verified at 320–2560px
   portrait and landscape with zero horizontal overflow.
-- `assets/clouds.png` — ordered-dither cloud band, used only behind the
-  landing copy and faded out at both edges with mask gradients
+- `assets/clouds.png` — ordered-dither cloud band behind the landing
+  copy. The layer bleeds 3.5rem above, 2.5rem sideways, and 4.5rem below
+  the hero (clipped by `overflow: clip`) so it grounds into the page
+  instead of stopping at the border; mask gradients fade it at both
+  axes
 - `script.js` (ES module: footer year, active-nav marking, mailto copy
   button with clipboard API and fallback)
 - Footer on every page: year on the left, email/github/linkedin on the right

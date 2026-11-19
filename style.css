@@ -265,6 +265,7 @@
   .hero {
     position: relative;
     isolation: isolate;
+    overflow: clip;
     display: grid;
     align-content: center;
     min-height: clamp(19rem, 46svh, 27rem);
@@ -275,7 +276,9 @@
   .hero::before {
     content: "";
     position: absolute;
-    inset: 0;
+    /* bleed beyond the hero on both sides and below, past its border,
+       so the band grounds into the page instead of being cropped by it */
+    inset: -3.5rem -2.5rem -4.5rem;
     z-index: -1;
     pointer-events: none;
     background: url(./assets/clouds.png) no-repeat center top / cover;
@@ -288,11 +291,11 @@
   @supports (mask-composite: intersect) and (mask-image: linear-gradient(#000, #000)) {
     .hero::before {
       -webkit-mask-image:
-        linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent),
-        linear-gradient(transparent, #000 14%, #000 84%, transparent);
+        linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
+        linear-gradient(transparent, #000 10%, #000 80%, transparent);
       mask-image:
-        linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent),
-        linear-gradient(transparent, #000 14%, #000 84%, transparent);
+        linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
+        linear-gradient(transparent, #000 10%, #000 80%, transparent);
       -webkit-mask-composite: source-in;
       mask-composite: intersect;
     }
