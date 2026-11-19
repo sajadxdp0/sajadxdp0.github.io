@@ -7,21 +7,28 @@
 
 Personal portfolio for Sajad. The landing is the About page
 (name, one about line, stack); Projects (Lexora, HookFlow, EsenceLab,
-neuDB) and Contact are the other two pages, plus a `noindex` 404 page.
-Goal: bring visitors to GitHub / LinkedIn / email contact. No blog, no
-feed, no archive, no subpages.
+neuDB, Tuxport) and Contact are the other two pages, plus a `noindex`
+404 page. Goal: bring visitors to GitHub / LinkedIn / email contact.
+No blog, no feed, no archive, no subpages.
 
 ## 2. How it works
 
-- Four pages: `index.html` (the About page), `projects.html`,
+- Five pages: `index.html` (the About page), `projects.html`,
   `contact.html`, `404.html` (noindex, not in the sitemap). No project
   subdirectories. Every project title links its GitHub repo directly.
 - Header brand is the pixel mark only; the name appears once per page,
   in the landing h1 (and once more as the copyright line in the footer).
-- `style.css` (edition 14, black and white only: ground `#0a0a0a`,
-  paper `#f5f5f5`, greys `#bcbcbc`/`#8a8a8a`, hairlines `#2a2a2a`/`#1f1f1f`;
-  62rem document column, 42rem read column, numbered flat title rows on
-  Projects and Contact, mono meta text, no looping motion)
+- `style.css` (edition 15, rewritten from scratch: cascade layers,
+  custom-property tokens, fluid type/spacing scales with clamp, svh
+  hero, logical properties, range media queries, hover-capability media,
+  mask-composite cloud fade with a plain-gradient fallback, reduced-motion
+  and print blocks). Black and white only: ground `#0a0a0a`, paper
+  `#f5f5f5`, greys `#bcbcbc`/`#8a8a8a`, hairlines `#262626`/`#1a1a1a`.
+  64rem content column, 44rem read column, numbered flat title rows on
+  Projects and Contact, mono meta text, no looping motion.
+- Responsive: rows collapse to two columns at 640px, header and hero
+  scale down, footer wraps; the footer sticks to the bottom on short
+  pages via the flex shell.
 - `assets/clouds.png` — ordered-dither cloud band, used only behind the
   landing copy and faded out at both edges with mask gradients
 - `script.js` (footer year, active-nav marking, mailto copy button)
@@ -44,7 +51,8 @@ python3 -m http.server -d ~/github-migration/site 8000
 - Project blurbs: `projects.html` only (keep in sync with the
   GitHub profile README). Each row's mono meta line lists that project's
   distinctive parts, never the shared python/fastapi/postgres boilerplate,
-  and links the live site when one exists.
+  and links the live site when one exists. Tuxport (05) links its repo
+  and its website at sajadxdp0.github.io/tuxport/.
 - Contact uses the same flat-rows component as Projects
 - Styles/nav: `style.css`, each page's `<nav>`
 
