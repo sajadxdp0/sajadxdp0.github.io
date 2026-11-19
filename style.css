@@ -302,14 +302,16 @@
     border-block-end: 1px solid var(--line-1);
   }
 
+  .page-head h1::before {
+    content: "↳ ";
+    color: var(--gray-2);
+    font: inherit;
+    margin-inline-end: 0;
+  }
+
   .page-head h1 {
     font: 400 var(--text-title) / 1.25 var(--mono);
     letter-spacing: -0.04em;
-  }
-
-  .page-head .arrow {
-    color: var(--paper);
-    margin-inline-end: var(--space-3);
   }
 
   .page-body {
@@ -334,10 +336,15 @@
 /* ------------------------------------------------------------------ */
 
 @layer rows {
-  .rows {
+  .rows,
+  .rows li {
     list-style: none;
+  }
+
+  .rows {
     margin: 0;
     padding: 0;
+    counter-reset: none;
     border-block-end: 1px solid var(--line-0);
   }
 

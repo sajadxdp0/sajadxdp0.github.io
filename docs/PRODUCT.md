@@ -37,7 +37,8 @@ No blog, no feed, no archive, no subpages.
   portrait and landscape with zero horizontal overflow.
 - `assets/clouds.png` — ordered-dither cloud band, used only behind the
   landing copy and faded out at both edges with mask gradients
-- `script.js` (footer year, active-nav marking, mailto copy button)
+- `script.js` (ES module: footer year, active-nav marking, mailto copy
+  button with clipboard API and fallback)
 - Footer on every page: year on the left, email/github/linkedin on the right
 - Discovery: `sitemap.xml` (3 urls), `robots.txt`, OG meta/`og.png`, `favicon.svg`
 - No templating: header/nav/footer duplicated per file (drift risk, see roadmap)
