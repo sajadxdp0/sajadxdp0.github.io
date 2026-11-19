@@ -18,14 +18,20 @@ No blog, no feed, no archive, no subpages.
   subdirectories. Every project title links its GitHub repo directly.
 - Header brand is the pixel mark only; the name appears once per page,
   in the landing h1 (and once more as the copyright line in the footer).
-- `style.css` (edition 15, rewritten from scratch: cascade layers,
+- `assets/fonts/jbmnf-{regular,bold,italic}.woff2` — JetBrains Mono
+  Nerd Font, subset (Latin, Latin-1, arrows, box-drawing) and self-hosted,
+  OFL 1.1. Preloaded on every page; `font-display: swap`. The whole site
+  is mono type, terminal identity.
+- `style.css` (edition 16: cascade layers,
   custom-property tokens, fluid type/spacing scales with clamp, svh
   hero, logical properties, range media queries, hover-capability media,
   mask-composite cloud fade with a plain-gradient fallback, reduced-motion
   and print blocks). Black and white only: ground `#0a0a0a`, paper
   `#f5f5f5`, greys `#bcbcbc`/`#8a8a8a`, hairlines `#262626`/`#1a1a1a`.
-  64rem content column, 44rem read column, numbered flat title rows on
-  Projects and Contact, mono meta text, no looping motion.
+  66rem content column, 42rem read column, numbered flat title rows on
+  Projects and Contact, all-mono type, no looping motion. Spacing rhythm
+  follows the inspiration site: roomy header (1.5/1.25rem), tall hero
+  (19–27rem min-height), feed-like rows with 1.5rem top padding.
 - Responsive: rows collapse to two columns at 640px, header and hero
   scale down, footer wraps; the footer sticks to the bottom on short
   pages via the flex shell. Safe-area insets keep content clear of
