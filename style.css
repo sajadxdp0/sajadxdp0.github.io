@@ -25,11 +25,11 @@
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 
-  /* fluid type scale */
+  /* fluid type scale (floors respect the 12px minimum on phones) */
   --text-hero: clamp(2.5rem, 1.6rem + 4.5vw, 4rem);
   --text-title: clamp(1.25rem, 1.05rem + 1vw, 1.5rem);
   --text-body: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
-  --text-meta: clamp(0.72rem, 0.68rem + 0.2vw, 0.78rem);
+  --text-meta: clamp(0.75rem, 0.71rem + 0.2vw, 0.8rem);
 
   /* spacing scale, 4px grid */
   --space-1: 0.25rem;
@@ -78,7 +78,9 @@
     background: var(--ink-0);
     color: var(--gray-1);
     font: 400 var(--text-body) / 1.65 var(--sans);
-    padding-inline: var(--gutter);
+    /* keep content clear of notches and the home indicator
+       when viewport-fit=cover is active */
+    padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -517,6 +519,56 @@
     .row > p:not(.links-line),
     .links-line {
       grid-column: 2;
+    }
+  }
+
+  /* short landscape viewports (phones held sideways): the hero
+     shrinks so the stack line and the fold stay visible */
+  @media (max-height: 480px) and (orientation: landscape) {
+    .hero {
+      min-height: 0;
+      padding-block: var(--space-5) var(--space-4);
+    }
+
+    .hero h1 {
+      margin-block-end: var(--space-4);
+    }
+
+    .hero .role {
+      margin-block-end: var(--space-4);
+    }
+
+    .page-head {
+      padding-block: var(--space-5) var(--space-3);
+    }
+  }
+
+  /* users who ask for more contrast get stronger hairlines and text */
+  @media (prefers-contrast: more) {
+    :root {
+      --line-0: #333333;
+      --line-1: #454545;
+      --gray-2: #a3a3a3;
+    }
+  }
+
+  /* Windows high contrast / forced colors: keep links distinguishable
+     without the grayscale ramp */
+  @media (forced-colors: active) {
+    a,
+    .site-nav a,
+    .site-footer a,
+    .row-title {
+      text-decoration: underline;
+    }
+
+    .row:hover,
+    .row:focus-within {
+      background: transparent;
+    }
+
+    .copy-btn {
+      border: 1px solid ButtonText;
     }
   }
 

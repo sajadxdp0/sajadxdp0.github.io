@@ -28,7 +28,13 @@ No blog, no feed, no archive, no subpages.
   Projects and Contact, mono meta text, no looping motion.
 - Responsive: rows collapse to two columns at 640px, header and hero
   scale down, footer wraps; the footer sticks to the bottom on short
-  pages via the flex shell.
+  pages via the flex shell. Safe-area insets keep content clear of
+  notches and the home indicator (`viewport-fit=cover`). Landscape
+  phones (max-height 480px) get a shorter hero so the stack line stays
+  above the fold. `prefers-contrast: more` strengthens hairlines and
+  text, `forced-colors: active` restores underlines on all links, and
+  the meta type floor is 12px at every width. Verified at 320–2560px
+  portrait and landscape with zero horizontal overflow.
 - `assets/clouds.png` — ordered-dither cloud band, used only behind the
   landing copy and faded out at both edges with mask gradients
 - `script.js` (footer year, active-nav marking, mailto copy button)
