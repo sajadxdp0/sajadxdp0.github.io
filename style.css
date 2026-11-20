@@ -370,7 +370,7 @@
   }
 
   .page-head h1::before {
-    content: "↳ ";
+    content: "↪ ";
     color: var(--gray-2);
     font: inherit;
     margin-inline-end: 0;
