@@ -267,25 +267,33 @@
     isolation: isolate;
     overflow: clip;
     display: grid;
-    align-content: center;
+    /* text sits in the upper third, a little above the optical middle,
+       so the clouds carry the lower half of the band */
+    align-content: start;
     min-height: clamp(19rem, 46svh, 27rem);
-    padding-block: var(--space-8) var(--space-7);
+    padding-block: clamp(3rem, 7svh, 4.5rem) var(--space-7);
     border-block-end: 1px solid var(--line-1);
   }
 
   .hero::before {
     content: "";
     position: absolute;
-    /* bleed beyond the hero on both sides and below, past its border,
-       so the band grounds into the page instead of being cropped by it */
-    inset: -3.5rem -2.5rem -4.5rem;
+    /* bleed generously sideways so the drift never exposes an edge */
+    inset: -3.5rem -6rem -4.5rem;
     z-index: -1;
     pointer-events: none;
     background: url(./assets/clouds.png) no-repeat center top / cover;
     opacity: 0.9;
+    /* slow floating drift: transform only, never layout */
+    animation: cloud-drift 38s ease-in-out infinite alternate;
     /* fallback: fade left and right only */
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  @keyframes cloud-drift {
+    from { transform: translate3d(-3rem, -0.5rem, 0); }
+    to   { transform: translate3d(3rem, 0.75rem, 0); }
   }
 
   @supports (mask-composite: intersect) and (mask-image: linear-gradient(#000, #000)) {
@@ -417,6 +425,17 @@
     margin-inline-start: 0.35rem;
   }
 
+  /* inline line icons for contact rows: one size, one box, aligned */
+  .row-icon {
+    display: inline-block;
+    width: 1.125em;
+    height: 1.125em;
+    margin-inline-end: 0.5em;
+    vertical-align: -0.125em;
+    color: var(--gray-2);
+    flex-shrink: 0;
+  }
+
   .row > p:not(.links-line) {
     grid-column: 3;
     margin: 0;
@@ -514,7 +533,8 @@
     }
 
     .row:hover .row-index,
-    .row-title:hover .ext {
+    .row-title:hover .ext,
+    .row-title:hover .row-icon {
       color: var(--gray-1);
     }
 

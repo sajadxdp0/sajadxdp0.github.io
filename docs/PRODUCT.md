@@ -6,9 +6,9 @@
 ## 1. What this product is
 
 Personal portfolio for Sajad. The landing is the About page
-(name, one about line, stack); Projects (Lexora, HookFlow, EsenceLab,
-neuDB, Tuxport) and Contact are the other two pages, plus a `noindex`
-404 page. Goal: bring visitors to GitHub / LinkedIn / email contact.
+(name, one about line, stack); Projects (Tuxport, Lexora, HookFlow,
+EsenceLab, neuDB) and Contact are the other two pages, plus a `noindex`
+404 page. Goal: bring visitors to GitHub / email contact.
 No blog, no feed, no archive, no subpages.
 
 ## 2. How it works
@@ -42,13 +42,16 @@ No blog, no feed, no archive, no subpages.
   the meta type floor is 12px at every width. Verified at 320–2560px
   portrait and landscape with zero horizontal overflow.
 - `assets/clouds.png` — ordered-dither cloud band behind the landing
-  copy. The layer bleeds 3.5rem above, 2.5rem sideways, and 4.5rem below
-  the hero (clipped by `overflow: clip`) so it grounds into the page
-  instead of stopping at the border; mask gradients fade it at both
-  axes
+  copy. The layer bleeds past the hero (clipped by `overflow: clip`),
+  mask gradients fade it on both axes, and a 38s transform-only
+  alternate drift animates it. The hero text sits in the upper third
+  (align-content: start, 3–4.5rem top padding) so the clouds carry the
+  lower half
 - `script.js` (ES module: footer year, active-nav marking, mailto copy
   button with clipboard API and fallback)
-- Footer on every page: year on the left, email/github/linkedin on the right
+- Footer on every page: year on the left, email/github on the right
+- Contact rows carry inline line icons (envelope, GitHub mark); there is
+  no LinkedIn anywhere on the site
 - Discovery: `sitemap.xml` (3 urls), `robots.txt`, OG meta/`og.png`, `favicon.svg`
 - No templating: header/nav/footer duplicated per file (drift risk, see roadmap)
 
@@ -67,7 +70,7 @@ python3 -m http.server -d ~/github-migration/site 8000
 - Project blurbs: `projects.html` only (keep in sync with the
   GitHub profile README). Each row's mono meta line lists that project's
   distinctive parts, never the shared python/fastapi/postgres boilerplate,
-  and links the live site when one exists. Tuxport (05) links its repo
+  and links the live site when one exists. Tuxport (01) links its repo
   and its website at sajadxdp0.github.io/tuxport/.
 - Contact uses the same flat-rows component as Projects
 - Styles/nav: `style.css`, each page's `<nav>`
