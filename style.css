@@ -385,6 +385,13 @@
     line-height: 1.7;
   }
 
+  .row > p:not(.links-line) a {
+    color: var(--paper);
+    text-decoration: underline;
+    text-decoration-color: var(--line-1);
+    text-underline-offset: 3px;
+  }
+
   .links-line {
     grid-column: 2;
     margin: 0;
@@ -487,7 +494,8 @@
       text-decoration-color: var(--paper);
     }
 
-    .links-line a:hover {
+    .links-line a:hover,
+    .row > p:not(.links-line) a:hover {
       text-decoration-color: var(--gray-2);
     }
   }

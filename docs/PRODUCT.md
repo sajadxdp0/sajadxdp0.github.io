@@ -44,7 +44,9 @@ to GitHub / email contact. No blog, no feed, no archive, no subpages.
   touch DPR renderings, not just viewport sizes.
 - `script.js` (ES module: footer year, active-nav marking, mailto copy
   button with clipboard API and fallback)
-- Footer on every page: year on the left, email/github on the right
+- Footer: year on the left, email/github on the right — except on the
+  contact page, where the page itself is the list and the footer shows
+  only the year
 - Contact rows carry inline line icons (envelope, GitHub mark); there is
   no LinkedIn anywhere on the site
 - Discovery: `sitemap.xml` (3 urls), `robots.txt`, OG meta/`og.png`, `favicon.svg`
