@@ -28,8 +28,9 @@ No blog, no feed, no archive, no subpages.
   mask-composite cloud fade with a plain-gradient fallback, reduced-motion
   and print blocks). Black and white only: ground `#0a0a0a`, paper
   `#f5f5f5`, greys `#bcbcbc`/`#8a8a8a`, hairlines `#262626`/`#1a1a1a`.
-  66rem content column, 42rem read column, numbered flat title rows on
-  Projects and Contact, all-mono type, no looping motion. Spacing rhythm
+  66rem content column, 42rem read column, two-column flat title rows on
+  Projects and Contact (no index numbers), all-mono type, one
+  looping drift on the landing clouds. Spacing rhythm
   follows the inspiration site: roomy header (1.5/1.25rem), tall hero
   (19–27rem min-height), feed-like rows with 1.5rem top padding.
 - Responsive: rows collapse to two columns at 640px, header and hero
