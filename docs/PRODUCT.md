@@ -6,7 +6,7 @@
 ## 1. What this product is
 
 Personal portfolio for Sajad. The landing is the About page (name,
-one about line, stack) with the five project rows directly below it,
+and the role line) with the five project rows directly below it,
 mirrored from `projects.html`. Projects (deep link) and Contact are
 the other two pages, plus a `noindex` 404 page. Goal: bring visitors
 to GitHub / email contact. No blog, no feed, no archive, no subpages.
@@ -58,10 +58,9 @@ python3 -m http.server -d ~/github-migration/site 8000
 ```
 
 ### Edit content
-- The landing intro is the whole about: `hey`, the role line, then the
-  stack under a hairline. Below it, a `Work` heading and the same five
-  rows as `projects.html` (mirrored — keep both in sync when a project
-  changes).
+- The landing intro is `hey` plus the role line, nothing else. Below it,
+  a `Work` heading and the same five rows as `projects.html`
+  (mirrored — keep both in sync when a project changes).
 - Project blurbs: `projects.html` only (keep in sync with the
   GitHub profile README). Each row's mono meta line lists that project's
   distinctive parts, never the shared python/fastapi/postgres boilerplate,

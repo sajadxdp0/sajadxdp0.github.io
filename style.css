@@ -283,15 +283,6 @@
     max-width: 38ch;
     margin-block-end: var(--space-5);
   }
-
-  .intro .stack {
-    color: var(--gray-2);
-    font: 400 var(--text-meta) / 1.7 var(--mono);
-    max-width: var(--read);
-    margin: 0;
-    padding-block-start: var(--space-4);
-    border-block-start: 1px solid var(--line-0);
-  }
 }
 @layer pages {
   .page-head {
