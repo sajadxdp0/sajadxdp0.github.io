@@ -502,9 +502,11 @@
       gap: var(--space-1) var(--space-4);
     }
 
+    /* one full-width track: title, blurb, and meta each take a row
+       at the full phone width — no skinny columns, no implicit tracks */
     .row {
-      grid-template-columns: 2.75rem minmax(0, 1fr);
-      column-gap: var(--space-3);
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: var(--space-2);
       padding-block: var(--space-4);
     }
 
