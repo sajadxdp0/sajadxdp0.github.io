@@ -262,59 +262,12 @@
 /* ------------------------------------------------------------------ */
 
 @layer hero {
-  .hero {
-    position: relative;
-    isolation: isolate;
-    overflow: clip;
-    display: grid;
-    /* text sits in the upper third, a little above the optical middle,
-       so the clouds carry the lower half of the band */
-    align-content: start;
-    min-height: clamp(19rem, 46svh, 27rem);
-    padding-block: clamp(3rem, 7svh, 4.5rem) var(--space-7);
+  .intro {
+    padding-block: var(--space-7) var(--space-6);
     border-block-end: 1px solid var(--line-1);
   }
 
-  .hero::before {
-    content: "";
-    position: absolute;
-    /* bleed generously sideways so the drift never exposes an edge */
-    inset: -3.5rem -6rem -4.5rem;
-    z-index: -1;
-    pointer-events: none;
-    background: url(./assets/clouds.png) no-repeat center top / cover;
-    opacity: 0.9;
-    /* slow floating drift: transform only, never layout */
-    animation: cloud-drift 38s ease-in-out infinite alternate;
-    /* fallback: fade left and right only */
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  }
-
-  @keyframes cloud-drift {
-    from { transform: translate3d(-3rem, -0.5rem, 0); }
-    to   { transform: translate3d(3rem, 0.75rem, 0); }
-  }
-
-  @supports (mask-composite: intersect) and (mask-image: linear-gradient(#000, #000)) {
-    .hero::before {
-      -webkit-mask-image:
-        linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
-        linear-gradient(transparent, #000 10%, #000 80%, transparent);
-      mask-image:
-        linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent),
-        linear-gradient(transparent, #000 10%, #000 80%, transparent);
-      -webkit-mask-composite: source-in;
-      mask-composite: intersect;
-    }
-  }
-
-  .hero-copy {
-    max-width: var(--read);
-    padding-block-start: var(--space-2);
-  }
-
-  .hero h1 {
+  .intro h1 {
     font-family: var(--mono);
     font-size: var(--text-hero);
     line-height: 1.02;
@@ -323,16 +276,15 @@
     margin-block-end: var(--space-4);
   }
 
-  .hero .role {
+  .intro .role {
     color: var(--gray-1);
     font-size: var(--text-title);
     line-height: 1.6;
     max-width: 38ch;
-    margin-block-end: var(--space-6);
+    margin-block-end: var(--space-5);
   }
 
-  /* the stack line reads as a terminal caption: hairline above it */
-  .hero .stack {
+  .intro .stack {
     color: var(--gray-2);
     font: 400 var(--text-meta) / 1.7 var(--mono);
     max-width: var(--read);
@@ -340,28 +292,7 @@
     padding-block-start: var(--space-4);
     border-block-start: 1px solid var(--line-0);
   }
-
-  .hero .next {
-    display: inline-flex;
-    align-items: baseline;
-    gap: var(--space-3);
-    color: var(--gray-2);
-    font: 400 var(--text-meta) / 1.4 var(--mono);
-    padding: 0.6em 0;
-    margin-block-start: var(--space-6);
-  }
-
-  .hero .next::after {
-    content: "→";
-    color: var(--gray-2);
-    transition: transform var(--speed) var(--ease);
-  }
 }
-
-/* ------------------------------------------------------------------ */
-/* Interior pages: heading band + plain body                           */
-/* ------------------------------------------------------------------ */
-
 @layer pages {
   .page-head {
     padding-block: var(--space-7) var(--space-5);
@@ -369,14 +300,16 @@
     border-block-end: 1px solid var(--line-1);
   }
 
-  .page-head h1::before {
+  .page-head h1::before,
+  .page-head h2::before {
     content: "↪ ";
     color: var(--gray-2);
     font: inherit;
     margin-inline-end: 0;
   }
 
-  .page-head h1 {
+  .page-head h1,
+  .page-head h2 {
     font: 400 var(--text-title) / 1.25 var(--mono);
     letter-spacing: -0.04em;
   }
@@ -566,18 +499,9 @@
     .links-line a:hover {
       text-decoration-color: var(--gray-2);
     }
-
-    .hero .next:hover {
-      color: var(--paper);
-    }
-
-    .hero .next:hover::after {
-      transform: translateX(0.25em);
-      color: var(--paper);
-    }
   }
 
-  @media (width <= 640px) {
+  @media (width <= 760px) {
     .site-header {
       gap: var(--space-2) var(--space-4);
       padding-block: var(--space-4) var(--space-3);
@@ -585,15 +509,6 @@
 
     .site-nav {
       gap: var(--space-1) var(--space-4);
-    }
-
-    .hero {
-      min-height: clamp(15rem, 38svh, 20rem);
-      padding-block: var(--space-6) var(--space-5);
-    }
-
-    .hero::before {
-      background-position: 70% top;
     }
 
     .row {
@@ -609,24 +524,11 @@
     }
   }
 
-  /* short landscape viewports (phones held sideways): the hero
-     shrinks so the stack line and the fold stay visible */
+  /* short landscape viewports (phones held sideways) */
   @media (max-height: 480px) and (orientation: landscape) {
-    .hero {
-      min-height: 0;
-      padding-block: var(--space-5) var(--space-4);
-    }
-
-    .hero h1 {
-      margin-block-end: var(--space-4);
-    }
-
-    .hero .role {
-      margin-block-end: var(--space-4);
-    }
-
+    .intro,
     .page-head {
-      padding-block: var(--space-5) var(--space-3);
+      padding-block: var(--space-5) var(--space-4);
     }
   }
 
@@ -678,7 +580,6 @@
       color: #111;
     }
 
-    .hero::before,
     .skip-link,
     .copy-btn {
       display: none;
