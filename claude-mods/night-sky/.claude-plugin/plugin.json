@@ -1,0 +1,11 @@
+{
+  "name": "night-sky",
+  "version": "1.0.0",
+  "description": "A quiet night-sky backdrop for Claude Code conversations.",
+  "author": {
+    "name": "Sajad"
+  },
+  "engines": {
+    "claude-code": ">=2.1.323"
+  }
+}

@@ -6,12 +6,12 @@ Built with Astro, HTML, and CSS. Astro renders each page at build time. The site
 
 ## Pages
 
-- `src/pages/index.astro` — introduction and selected work.
+- `src/pages/index.astro` — short introduction.
 - `src/pages/projects.astro` — complete project list.
-- `src/pages/contact.astro` — email, GitHub, and LinkedIn.
+- `src/pages/contact.astro` — email, GitHub, and X.
 - `src/pages/404.astro` — no-index not-found page.
 
-`src/components/ProjectRows.astro` is the source for project descriptions, tags, and links. `src/layouts/BaseLayout.astro` defines shared metadata, navigation, and the footer.
+`src/components/ProjectRows.astro` is the source for project descriptions and links on the Projects page. `src/layouts/BaseLayout.astro` defines shared metadata, navigation, and the footer.
 
 ## Run locally
 

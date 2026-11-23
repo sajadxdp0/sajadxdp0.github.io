@@ -1,0 +1,12 @@
+{
+  "name": "sajad-portfolio",
+  "owner": {
+    "name": "Sajad"
+  },
+  "plugins": [
+    {
+      "name": "night-sky",
+      "source": "./claude-mods/night-sky"
+    }
+  ]
+}

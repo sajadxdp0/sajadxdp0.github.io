@@ -1,0 +1,4 @@
+{
+  "description": "Sets and renders the night-sky conversation backdrop.",
+  "modules": ["./register.js"]
+}
