@@ -3,27 +3,20 @@ import ProjectRows from "../components/ProjectRows.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout
-  title="Sajad — Backend & Applied AI Engineer"
-  description="Sajad builds reliable backend systems, developer tools, and practical AI infrastructure."
+  title="Sajad — Software Engineer"
+  description="I build cool things with code and AI."
   page="about"
   canonical="https://sajadxdp0.github.io/"
 >
   <main id="main" tabindex="-1">
-    <section class="hero">
-      <p class="eyebrow">Bengaluru, India · Open to backend and applied AI roles</p>
-      <h1>Backend systems<br />for <em>real work.</em></h1>
-      <p class="hero-copy">I build reliable APIs, distributed systems, and practical AI infrastructure.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="/projects.html">Projects <span aria-hidden="true">↗</span></a>
-        <a class="button secondary" href="https://github.com/sajadxdp0">GitHub <span aria-hidden="true">↗</span></a>
-      </div>
+    <section class="intro">
+      <h1>I'm a software engineer.</h1>
+      <p>I build cool things with code and AI.</p>
     </section>
     <section class="section" aria-labelledby="work-heading">
-      <div class="section-head">
-        <h2 id="work-heading">Selected work</h2>
-        <a class="all-link" href="/projects.html">All projects ↗</a>
-      </div>
+      <h2 id="work-heading">Projects</h2>
       <ProjectRows selectedOnly={true} />
+      <p class="more"><a href="/projects.html">All projects</a></p>
     </section>
   </main>
 </BaseLayout>

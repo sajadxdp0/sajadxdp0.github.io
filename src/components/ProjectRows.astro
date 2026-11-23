@@ -8,59 +8,39 @@ const { selectedOnly = false } = Astro.props;
 const projects = [
   {
     name: "HookFlow",
-    category: "Backend / distributed systems",
     href: "https://github.com/sajadxdp0/hookflow",
-    description: "Webhook delivery with idempotent ingestion, leased workers, retries, signatures, and dead-letter replay.",
-    details: ["FastAPI", "PostgreSQL", "Redis"],
+    description: "Webhook delivery with retries, signatures, and dead-letter replay.",
     selected: true,
   },
   {
     name: "Lexora",
-    category: "Applied AI / RAG",
     href: "https://github.com/sajadxdp0/lexora-ai",
-    description: "Document Q&A with cited answers, per-user retrieval, and streaming.",
-    details: ["FastAPI", "FAISS", "Celery", "SSE"],
+    description: "Document Q&A with cited answers and per-user retrieval.",
     selected: true,
   },
   {
     name: "neuDB",
-    category: "Developer tools / storage",
     href: "https://github.com/sajadxdp0/neudb",
-    description: "Embedded Python database with JSON tables, atomic writes, and semantic search.",
-    details: ["Python", "Standard library", "Storage"],
+    description: "Embedded Python database with JSON tables and semantic search.",
     selected: true,
     links: [{ label: "PyPI", href: "https://pypi.org/project/neudb/" }],
   },
   {
-    name: "Klear",
-    category: "Fintech / applied AI",
-    href: "https://github.com/sajadxdp0/klear",
-    description: "Merchant payment reconciliation, recovery, and fraud review.",
-    details: ["TypeScript", "Cashfree", "Sarvam AI", "ONNX"],
-    selected: true,
-  },
-  {
     name: "Tuxport",
-    category: "Systems / Android / Linux",
     href: "https://github.com/sajadxdp0/tuxport",
-    description: "Android Linux terminal with Alpine and ARM64 support, no root.",
-    details: ["Rust", "Android", "ARM64"],
+    description: "Android terminal for Alpine Linux and ARM64 binaries, without root.",
     links: [{ label: "Website", href: "https://sajadxdp0.github.io/tuxport/" }],
   },
   {
     name: "EsenceLab",
-    category: "Full-stack / applied AI",
     href: "https://github.com/sajadxdp0/esencelab",
-    description: "Hiring platform for resume parsing, skill matching, and recruiter shortlists.",
-    details: ["Next.js", "Express", "FastAPI", "RBAC"],
+    description: "Resume parsing and skill matching for recruiter shortlists.",
     links: [{ label: "Live site", href: "https://esencelab.vercel.app" }],
   },
   {
     name: "Helium for Android",
-    category: "Android / privacy",
     href: "https://github.com/sajadxdp0/helium-android",
-    description: "Android browser built with Compose, GeckoView, and a Rust URL resolver.",
-    details: ["Kotlin", "Compose", "GeckoView", "Rust"],
+    description: "Android browser built with Compose, GeckoView, and Rust.",
   },
 ];
 
@@ -68,22 +48,14 @@ const visibleProjects = selectedOnly
   ? projects.filter((project) => project.selected)
   : projects;
 ---
-<div class="project-grid">
-  {visibleProjects.map((project, index) => (
-    <article class="project-card">
-      <div class="card-top">
-        <span class="index">{String(index + 1).padStart(2, "0")}</span>
-        <span class="tag">{project.category}</span>
-      </div>
-      <h3>{project.name}</h3>
-      <p class="project-lede">{project.description}</p>
-      <div class="chips">{project.details.map((detail) => <span>{detail}</span>)}</div>
-      <div class="card-links">
-        <a href={project.href}>Source <span aria-hidden="true">↗</span></a>
-        {project.links?.map((link) => (
-          <a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>
-        ))}
-      </div>
-    </article>
+<ul class="project-list">
+  {visibleProjects.map((project) => (
+    <li>
+      <a class="project-name" href={project.href}>{project.name}</a>
+      <p>{project.description}</p>
+      {project.links?.map((link) => (
+        <p class="project-extra"><a href={link.href}>{link.label}</a></p>
+      ))}
+    </li>
   ))}
-</div>
+</ul>
