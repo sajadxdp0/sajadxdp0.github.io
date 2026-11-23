@@ -1,5 +1,5 @@
 ---
-import "../../style.css";
+import "../styles/portfolio.css";
 interface Props {
   title: string;
   description: string;
@@ -36,19 +36,20 @@ const { title, description, page, canonical, noindex = false } = Astro.props;
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href="/" aria-label="Sajad, home"><span class="mark" aria-hidden="true">sajad</span></a>
+      <a class="brand" href="/" aria-label="Sajad, home"><span class="mark">sajad<span aria-hidden="true">.</span></span></a>
       <nav class="site-nav" aria-label="Primary">
-        <a href="/" aria-current={page === "about" ? "page" : undefined}>about</a>
-        <a href="/projects.html" aria-current={page === "projects" ? "page" : undefined}>projects</a>
-        <a href="/contact.html" aria-current={page === "contact" ? "page" : undefined}>contact</a>
+        <a href="/" aria-current={page === "about" ? "page" : undefined}>Overview</a>
+        <a href="/projects.html" aria-current={page === "projects" ? "page" : undefined}>Projects</a>
+        <a href="/contact.html" aria-current={page === "contact" ? "page" : undefined}>Contact</a>
       </nav>
+      <a class="top-cta" href="mailto:abdullasajad01@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
     </header>
     <slot />
     <footer class="site-footer">
-      <p>&copy; <time id="year">2026</time> sajad</p>
+      <p>&copy; <time id="year">2026</time> Sajad</p>
       <nav class="elsewhere" aria-label="Elsewhere">
-        <a href="mailto:abdullasajad01@gmail.com">email</a>
-        <a href="https://github.com/sajadxdp0">github</a>
+        <a href="https://github.com/sajadxdp0">GitHub</a>
+        <a href="https://linkedin.com/in/abdullasajad">LinkedIn</a>
       </nav>
     </footer>
     <script src="../../script.js"></script>

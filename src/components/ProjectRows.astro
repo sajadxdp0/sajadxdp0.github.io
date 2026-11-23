@@ -1,54 +1,89 @@
 ---
+interface Props {
+  selectedOnly?: boolean;
+}
+
+const { selectedOnly = false } = Astro.props;
+
 const projects = [
   {
-    name: "Tuxport",
-    href: "https://github.com/sajadxdp0/tuxport",
-    description: "A Linux terminal for Android, with Alpine Linux bundled. No root access required.",
-    details: ["Alpine Linux", "ARM64", "no root"],
-    website: "https://sajadxdp0.github.io/tuxport/",
+    name: "HookFlow",
+    category: "BACKEND / DISTRIBUTED SYSTEMS",
+    href: "https://github.com/sajadxdp0/hookflow",
+    description: "Durable webhook delivery with idempotent ingestion, leased workers, signatures, retries, and dead-letter replay.",
+    details: ["FastAPI", "PostgreSQL", "Redis"],
+    selected: true,
   },
   {
     name: "Lexora",
+    category: "APPLIED AI / RAG",
     href: "https://github.com/sajadxdp0/lexora-ai",
-    description: "Document Q&A with cited sources and per-user retrieval.",
-    details: ["FAISS", "Celery", "SSE"],
-  },
-  {
-    name: "HookFlow",
-    href: "https://github.com/sajadxdp0/hookflow",
-    description: "Durable webhook delivery with signatures, retries, and idempotency.",
-    details: ["HMAC signing", "exponential backoff", "Next.js"],
-  },
-  {
-    name: "EsenceLab",
-    href: "https://github.com/sajadxdp0/esencelab",
-    description: "Hiring platform for resume parsing, skill matching, and recruiter shortlists.",
-    details: ["Next.js", "Express", "FastAPI", "RBAC"],
-    website: "https://esencelab.vercel.app",
+    description: "Document Q&A with source citations, per-user retrieval, and streamed answers.",
+    details: ["FastAPI", "FAISS", "Celery", "SSE"],
+    selected: true,
   },
   {
     name: "neuDB",
+    category: "DEVELOPER TOOLS / STORAGE",
     href: "https://github.com/sajadxdp0/neudb",
-    description: "Zero-dependency embedded Python database with atomic writes and vector search.",
-    details: ["stdlib only", "atomic writes", "cosine search"],
-    website: "https://sajadxdp0.github.io/neudb/",
-    websiteLabel: "promo site",
+    description: "Embedded Python database with readable JSON tables, atomic writes, and semantic search.",
+    details: ["Python", "Standard library", "Storage"],
+    selected: true,
+    links: [{ label: "PyPI", href: "https://pypi.org/project/neudb/" }],
+  },
+  {
+    name: "Klear",
+    category: "FINTECH / APPLIED AI",
+    href: "https://github.com/sajadxdp0/klear",
+    description: "Merchant tools for payment reconciliation, failed-payment recovery, and fraud review.",
+    details: ["TypeScript", "Cashfree", "Sarvam AI", "ONNX"],
+    selected: true,
+  },
+  {
+    name: "Tuxport",
+    category: "SYSTEMS / ANDROID / LINUX",
+    href: "https://github.com/sajadxdp0/tuxport",
+    description: "Linux terminal for Android with Alpine bundled; runs ARM64 binaries without root.",
+    details: ["Rust", "Android", "ARM64"],
+    links: [{ label: "Website", href: "https://sajadxdp0.github.io/tuxport/" }],
+  },
+  {
+    name: "EsenceLab",
+    category: "FULL-STACK / APPLIED AI",
+    href: "https://github.com/sajadxdp0/esencelab",
+    description: "Hiring platform with resume parsing, deterministic skill matching, and recruiter shortlists.",
+    details: ["Next.js", "Express", "FastAPI", "RBAC"],
+    links: [{ label: "Live site", href: "https://esencelab.vercel.app" }],
+  },
+  {
+    name: "Helium for Android",
+    category: "ANDROID / PRIVACY",
+    href: "https://github.com/sajadxdp0/helium-android",
+    description: "Privacy-minded Android browser built with Compose, GeckoView, and a Rust URL resolver.",
+    details: ["Kotlin", "Compose", "GeckoView", "Rust"],
   },
 ];
+
+const visibleProjects = selectedOnly
+  ? projects.filter((project) => project.selected)
+  : projects;
 ---
-<ul class="rows">
-  {projects.map((project) => (
-    <li class="row">
-      <a class="row-title" href={project.href}>
-        {project.name}<span class="ext" aria-hidden="true">↗</span>
-      </a>
-      <p>{project.description}</p>
-      <p class="links-line">
-        {project.details.map((detail, index) => <>{index > 0 && <> · </>}{detail}</>)}
-        {project.website && <>
-          &nbsp;· <a href={project.website}>{project.websiteLabel ?? "website"}<span class="ext" aria-hidden="true">↗</span></a>
-        </>}
-      </p>
-    </li>
+<div class="project-grid">
+  {visibleProjects.map((project, index) => (
+    <article class="project-card">
+      <div class="card-top">
+        <span class="index">{String(index + 1).padStart(2, "0")}</span>
+        <span class="tag">{project.category}</span>
+      </div>
+      <h3>{project.name}</h3>
+      <p class="project-lede">{project.description}</p>
+      <div class="chips">{project.details.map((detail) => <span>{detail}</span>)}</div>
+      <div class="card-links">
+        <a href={project.href}>Source <span aria-hidden="true">↗</span></a>
+        {project.links?.map((link) => (
+          <a href={link.href}>{link.label} <span aria-hidden="true">↗</span></a>
+        ))}
+      </div>
+    </article>
   ))}
-</ul>
+</div>

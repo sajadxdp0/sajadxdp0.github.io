@@ -2,22 +2,31 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout
-  title="Contact · Sajad"
-  description="Get in touch with Sajad via email or GitHub."
+  title="Contact — Sajad"
+  description="Contact Sajad about backend engineering and applied AI opportunities."
   page="contact"
   canonical="https://sajadxdp0.github.io/contact.html"
 >
   <main id="main" tabindex="-1">
-    <header class="page-head"><h1>Contact</h1></header>
-    <ul class="rows">
-      <li class="row">
-        <a class="row-title" href="mailto:abdullasajad01@gmail.com">Email</a>
-        <p><a href="mailto:abdullasajad01@gmail.com">abdullasajad01@gmail.com</a></p>
-      </li>
-      <li class="row">
-        <a class="row-title" href="https://github.com/sajadxdp0">GitHub<span class="ext" aria-hidden="true">↗</span></a>
-        <p><a href="https://github.com/sajadxdp0">github.com/sajadxdp0</a></p>
-      </li>
-    </ul>
+    <section class="page-intro contact-intro">
+      <span class="kicker">CONTACT</span>
+      <h1>Let's talk<br /><em>about the work.</em></h1>
+      <p>I'm interested in backend engineering, software engineering, and applied AI roles.</p>
+    </section>
+    <section class="contact-grid" aria-label="Contact links">
+      <a class="contact-card" href="mailto:abdullasajad01@gmail.com">
+        <span class="kicker">EMAIL</span><b>abdullasajad01@gmail.com</b><span>Send a message ↗</span>
+      </a>
+      <a class="contact-card" href="https://linkedin.com/in/abdullasajad">
+        <span class="kicker">LINKEDIN</span><b>Abdulla Sajad</b><span>Connect ↗</span>
+      </a>
+      <a class="contact-card" href="https://github.com/sajadxdp0">
+        <span class="kicker">GITHUB</span><b>@sajadxdp0</b><span>Repositories ↗</span>
+      </a>
+    </section>
+    <section class="closing">
+      <span class="kicker">BASED IN</span>
+      <p>Bengaluru, India · Open to on-site and hybrid opportunities.</p>
+    </section>
   </main>
 </BaseLayout>

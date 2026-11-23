@@ -3,17 +3,41 @@ import ProjectRows from "../components/ProjectRows.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout
-  title="Sajad · Software Engineer"
-  description="Sajad is a software engineer building systems, backend services, and developer tools."
+  title="Sajad — Backend & Applied AI Engineer"
+  description="Sajad builds reliable backend systems, developer tools, and practical AI infrastructure."
   page="about"
   canonical="https://sajadxdp0.github.io/"
 >
   <main id="main" tabindex="-1">
-    <section class="intro" aria-label="About">
-      <h1>Sajad</h1>
-      <p class="role">Software engineer building systems, backend services, and developer tools.</p>
+    <section class="hero">
+      <div class="eyebrow">
+        <span class="pulse" aria-hidden="true"></span>
+        OPEN TO BACKEND / SWE / APPLIED AI ROLES
+        <span class="location">· BENGALURU, INDIA</span>
+      </div>
+      <h1>Backend systems<br />for <em>real work.</em></h1>
+      <p class="hero-copy">I'm Sajad, a software engineer focused on reliable APIs, distributed systems, and practical AI infrastructure.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="/projects.html">Selected work <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="https://github.com/sajadxdp0">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="https://linkedin.com/in/abdullasajad">LinkedIn <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-meta"><span>FOCUS <b>Backend · Applied AI · Systems</b></span></div>
     </section>
-    <header class="page-head"><h2>Work</h2></header>
-    <ProjectRows />
+    <section class="section" aria-labelledby="work-heading">
+      <div class="section-head">
+        <div><span class="kicker">SELECTED WORK</span><h2 id="work-heading">A few things I've built.</h2></div>
+        <a class="all-link" href="/projects.html">All projects ↗</a>
+      </div>
+      <ProjectRows selectedOnly={true} />
+    </section>
+    <section class="closing">
+      <span class="kicker">NEXT STEP</span>
+      <h2>Let's talk about the work.</h2>
+      <div class="hero-actions">
+        <a class="button primary" href="mailto:abdullasajad01@gmail.com">Email me</a>
+        <a class="button secondary" href="/contact.html">Contact details</a>
+      </div>
+    </section>
   </main>
 </BaseLayout>

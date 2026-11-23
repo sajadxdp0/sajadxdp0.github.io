@@ -3,13 +3,19 @@ import ProjectRows from "../components/ProjectRows.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout
-  title="Projects · Sajad"
-  description="Selected projects by Sajad: Tuxport, Lexora, HookFlow, EsenceLab, and neuDB."
+  title="Projects — Sajad"
+  description="Selected backend, applied AI, developer-tools, and systems projects by Sajad."
   page="projects"
   canonical="https://sajadxdp0.github.io/projects.html"
 >
   <main id="main" tabindex="-1">
-    <header class="page-head"><h1>Projects</h1></header>
-    <ProjectRows />
+    <section class="page-intro">
+      <span class="kicker">SELECTED WORK / 2024–2026</span>
+      <h1>Projects built to<br /><em>solve real problems.</em></h1>
+      <p>Backend systems, applied AI, developer tools, and Android projects. Each summary links to source.</p>
+    </section>
+    <section class="project-list" aria-label="Projects">
+      <ProjectRows />
+    </section>
   </main>
-</BaseLayout>
+  </BaseLayout>
