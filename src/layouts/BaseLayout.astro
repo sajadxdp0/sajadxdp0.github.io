@@ -22,6 +22,7 @@ const currentYear = new Date().getFullYear();
     <meta name="author" content="Abdulla Sajad" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/assets/fonts/jbmnf-regular.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Sajad" />
     <meta property="og:title" content={title} />
@@ -34,6 +35,7 @@ const currentYear = new Date().getFullYear();
     <title>{title}</title>
   </head>
   <body>
+    <div class="site-backdrop" data-scene="night-sky" aria-hidden="true"></div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <a class="brand" href="/" aria-label="Sajad, home"><span class="mark">sajad<span aria-hidden="true">.</span></span></a>
