@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { title, description, page, canonical, noindex = false } = Astro.props;
+const currentYear = new Date().getFullYear();
 ---
 <!doctype html>
 <html lang="en">
@@ -46,12 +47,11 @@ const { title, description, page, canonical, noindex = false } = Astro.props;
     </header>
     <slot />
     <footer class="site-footer">
-      <p>&copy; <time id="year">2026</time> Sajad</p>
+      <p>&copy; <time>{currentYear}</time> Sajad</p>
       <nav class="elsewhere" aria-label="Elsewhere">
         <a href="https://github.com/sajadxdp0">GitHub</a>
         <a href="https://linkedin.com/in/abdullasajad">LinkedIn</a>
       </nav>
     </footer>
-    <script src="../../script.js"></script>
   </body>
 </html>
