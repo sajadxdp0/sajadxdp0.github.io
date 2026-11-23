@@ -44,7 +44,6 @@ a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
 .skip-link:focus { position: fixed; z-index: 1; inset: 1rem auto auto 1rem; padding: 0.5rem 0.8rem; background: var(--text); color: var(--bg); }
 
 main { flex: 1; padding-block: 2.5rem 4rem; }
-.intro { margin-bottom: 2.5rem; }
 h1, h2 { color: var(--text); font-weight: 500; line-height: 1.35; }
 h1 { margin: 0; font-size: 1.8rem; }
 h2 { margin: 0 0 1rem; font-size: 1.2rem; }
@@ -56,7 +55,6 @@ h2 { margin: 0 0 1rem; font-size: 1.2rem; }
 .project-list p { margin: 0.25rem 0 0; }
 .project-list .project-name { font-weight: 500; }
 .project-extra { font-size: 0.9rem; }
-.more { margin-top: 1rem; }
 .contact-list { margin: 1rem 0; }
 .contact-list li { margin-block: 0.5rem; }
 .site-footer { padding-block: 1rem 1.5rem; border-top: 1px solid var(--line); font-size: 0.875rem; }

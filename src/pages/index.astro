@@ -1,5 +1,4 @@
 ---
-import ProjectRows from "../components/ProjectRows.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout
@@ -12,11 +11,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="intro">
       <h1>I'm a software engineer.</h1>
       <p>I build cool things with code and AI.</p>
-    </section>
-    <section class="section" aria-labelledby="work-heading">
-      <h2 id="work-heading">Projects</h2>
-      <ProjectRows selectedOnly={true} />
-      <p class="more"><a href="/projects.html">All projects</a></p>
     </section>
   </main>
 </BaseLayout>
