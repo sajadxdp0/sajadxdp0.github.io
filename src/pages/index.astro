@@ -1,0 +1,19 @@
+---
+import ProjectRows from "../components/ProjectRows.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Sajad · Software Engineer"
+  description="Sajad is a software engineer building systems, backend services, and developer tools."
+  page="about"
+  canonical="https://sajadxdp0.github.io/"
+>
+  <main id="main" tabindex="-1">
+    <section class="intro" aria-label="About">
+      <h1>Sajad</h1>
+      <p class="role">Software engineer building systems, backend services, and developer tools.</p>
+    </section>
+    <header class="page-head"><h2>Work</h2></header>
+    <ProjectRows />
+  </main>
+</BaseLayout>

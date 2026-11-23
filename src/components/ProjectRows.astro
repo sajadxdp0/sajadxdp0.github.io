@@ -1,0 +1,54 @@
+---
+const projects = [
+  {
+    name: "Tuxport",
+    href: "https://github.com/sajadxdp0/tuxport",
+    description: "A Linux terminal for Android, with Alpine Linux bundled. No root access required.",
+    details: ["Alpine Linux", "ARM64", "no root"],
+    website: "https://sajadxdp0.github.io/tuxport/",
+  },
+  {
+    name: "Lexora",
+    href: "https://github.com/sajadxdp0/lexora-ai",
+    description: "Document Q&A with cited sources and per-user retrieval.",
+    details: ["FAISS", "Celery", "SSE"],
+  },
+  {
+    name: "HookFlow",
+    href: "https://github.com/sajadxdp0/hookflow",
+    description: "Durable webhook delivery with signatures, retries, and idempotency.",
+    details: ["HMAC signing", "exponential backoff", "Next.js"],
+  },
+  {
+    name: "EsenceLab",
+    href: "https://github.com/sajadxdp0/esencelab",
+    description: "Hiring platform for resume parsing, skill matching, and recruiter shortlists.",
+    details: ["Next.js", "Express", "FastAPI", "RBAC"],
+    website: "https://esencelab.vercel.app",
+  },
+  {
+    name: "neuDB",
+    href: "https://github.com/sajadxdp0/neudb",
+    description: "Zero-dependency embedded Python database with atomic writes and vector search.",
+    details: ["stdlib only", "atomic writes", "cosine search"],
+    website: "https://sajadxdp0.github.io/neudb/",
+    websiteLabel: "promo site",
+  },
+];
+---
+<ul class="rows">
+  {projects.map((project) => (
+    <li class="row">
+      <a class="row-title" href={project.href}>
+        {project.name}<span class="ext" aria-hidden="true">↗</span>
+      </a>
+      <p>{project.description}</p>
+      <p class="links-line">
+        {project.details.map((detail, index) => <>{index > 0 && <> · </>}{detail}</>)}
+        {project.website && <>
+          &nbsp;· <a href={project.website}>{project.websiteLabel ?? "website"}<span class="ext" aria-hidden="true">↗</span></a>
+        </>}
+      </p>
+    </li>
+  ))}
+</ul>

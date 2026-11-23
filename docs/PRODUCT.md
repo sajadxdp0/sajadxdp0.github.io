@@ -1,95 +1,47 @@
 # Portfolio Site
 
-> Maintainer doc. Static site, hosted by GitHub Pages at sajadxdp0.github.io.
-> Codebase: `~/github-migration/site` | Stack: vanilla HTML + CSS + JS, no build.
+> Maintainer guide for the static portfolio at sajadxdp0.github.io.
+> Stack: Astro, HTML, CSS, and JavaScript. No client framework.
 
-## 1. What this product is
+## Site structure
 
-Personal portfolio for Sajad. The landing is the About page (name,
-and the role line) with the five project rows directly below it,
-mirrored from `projects.html`. Projects (deep link) and Contact are
-the other two pages, plus a `noindex` 404 page. Goal: bring visitors
-to GitHub / email contact. No blog, no feed, no archive, no subpages.
+- `src/pages/index.astro` — About page and selected projects.
+- `src/pages/projects.astro` — project list, published at `/projects.html`.
+- `src/pages/contact.astro` — email and GitHub, published at `/contact.html`.
+- `src/pages/404.astro` — no-index not-found page.
+- `src/layouts/BaseLayout.astro` — shared metadata, navigation, and footer.
+- `src/components/ProjectRows.astro` — the single source for project descriptions and links.
+- `style.css` and `script.js` — global styles and browser enhancements;
+  `public/` — the favicon, social image, font files, sitemap, and robots.txt.
 
-## 2. How it works
+The site uses a pure-black background, grayscale text, fine separators, and
+quiet static light fields. JetBrains Mono Nerd Font is self-hosted. Project
+rows use a flat two-column layout on wide screens and stack on small screens.
+Reduced-motion, forced-colors, and print styles are included.
 
-- Five pages: `index.html` (the About page), `projects.html`,
-  `contact.html`, `404.html` (noindex, not in the sitemap). No project
-  subdirectories. Every project title links its GitHub repo directly.
-- Header brand is the pixel mark only; the name appears once per page,
-  in the landing h1 (and once more as the copyright line in the footer).
-- `assets/fonts/jbmnf-{regular,bold,italic}.woff2` — JetBrains Mono
-  Nerd Font, subset (Latin, Latin-1, arrows, box-drawing) and self-hosted,
-  OFL 1.1. Preloaded on every page; `font-display: swap`. The whole site
-  is mono type, terminal identity.
-- `style.css` (edition 16: cascade layers,
-  custom-property tokens, fluid type/spacing scales with clamp, svh
-  hero, logical properties, range media queries, hover-capability media,
-  mask-composite cloud fade with a plain-gradient fallback, reduced-motion
-  and print blocks). Black and white only: ground `#0a0a0a`, paper
-  `#f5f5f5`, greys `#bcbcbc`/`#8a8a8a`, hairlines `#262626`/`#1a1a1a`.
-  66rem content column, 42rem read column, two-column flat title rows on
-  the landing, Projects and Contact (no index numbers), all-mono type,
-  no background art. Spacing rhythm: roomy header (1.5/1.25rem),
-  content-height intro (no min-height), feed-like rows.
-- Responsive: rows collapse to one column at 760px, header and intro
-  scale down, footer wraps; the footer sticks to the bottom on short
-  pages via the flex shell. Safe-area insets keep content clear of
-  notches. Landscape phones (max-height 480px) tighten the intro.
-  `prefers-contrast: more` strengthens hairlines and text,
-  `forced-colors: active` restores underlines, and the type floor is
-  12px at every width. Verified on real device profiles — iPhone SE
-  through Pro Max, Pixel 7, Galaxy S24 and Z Fold folded, iPad Mini
-  and Pro, landscape — with zero overflow and WCAG A/AA clean on
-  touch DPR renderings, not just viewport sizes.
-- `script.js` (ES module: footer year, active-nav marking, mailto copy
-  button with clipboard API and fallback)
-- Footer: year on the left, email/github on the right — except on the
-  contact page, where the page itself is the list and the footer shows
-  only the year
-- Contact rows carry inline line icons (envelope, GitHub mark); there is
-  no LinkedIn anywhere on the site
-- Discovery: `sitemap.xml` (3 urls), `robots.txt`, OG meta/`og.png`, `favicon.svg`
-- No templating: header/nav/footer duplicated per file (drift risk, see roadmap)
-
-## 3. User guide
-
-### Serve locally
-```bash
-python3 -m http.server -d ~/github-migration/site 8000
-```
-
-### Edit content
-- The landing intro is `hey` plus the role line, nothing else. Below it,
-  a `Work` heading and the same five rows as `projects.html`
-  (mirrored — keep both in sync when a project changes).
-- Project blurbs: `projects.html` only (keep in sync with the
-  GitHub profile README). Each row's mono meta line lists that project's
-  distinctive parts, never the shared python/fastapi/postgres boilerplate,
-  and links the live site when one exists. Tuxport (01) links its repo
-  and its website at sajadxdp0.github.io/tuxport/.
-- Contact uses the same flat-rows component as Projects
-- Styles/nav: `style.css`, each page's `<nav>`
-
-### Deploy
-Push `main` → GitHub Pages serves the repo root. Verify: `/sitemap.xml`,
-`/robots.txt`.
-
-## 4. Operations
-
-- No env, no health endpoint (static). Monitor via Pages status + manual
-  link check.
-- Keep `sitemap.xml` `lastmod` in sync when a page's content changes
-  (currently 2026-11-19).
-- The verification harness (check, smoke, contrast, responsive, live-audit
-  scripts) lives outside the repo in `~/shots/pf-harness/`.
-- Roadmap: link-check CI, HTML validator run. Both are dev-time only; the
-  site itself stays build-free.
-
-## 5. Verification
+## Run locally
 
 ```bash
-python3 -m http.server -d . 8000
+npm ci
+npm run dev
 ```
-Then check `/`, `/projects.html`, `/contact.html`,
-`/sitemap.xml`.
+
+## Update content
+
+Edit project descriptions and links in `src/components/ProjectRows.astro`.
+The home and Projects pages share this component. Update page metadata in
+`src/pages/` and `sitemap.xml` when page content changes.
+
+Keep project descriptions concise and specific. Use the metadata line for
+distinctive technologies or mechanisms, not generic stack lists.
+
+## Build and deploy
+
+```bash
+npm run build
+npm run preview
+```
+
+Astro writes the static site to `dist/`. The GitHub Actions workflow builds
+and deploys that directory when changes reach `main`. Set the repository's
+Pages source to GitHub Actions.
