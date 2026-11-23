@@ -10,9 +10,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <main id="main" tabindex="-1">
     <h1>Contact</h1>
     <ul class="contact-list">
-      <li><a href="mailto:abdullasajad01@gmail.com">Email</a></li>
-      <li><a href="https://github.com/sajadxdp0">GitHub</a></li>
-      <li><a href="https://x.com/sajadxdp">X · @sajadxdp</a></li>
+      <li>
+        <a class="contact-link" href="mailto:abdullasajad01@gmail.com">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">
+            <rect x="2.75" y="4.75" width="18.5" height="14.5" rx="2" />
+            <path d="m3.5 6 8.5 6.25L20.5 6" />
+          </svg>
+          <span class="contact-label">Email</span>
+        </a>
+      </li>
+      <li>
+        <a class="contact-link" href="https://github.com/sajadxdp0">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M12 .297a12 12 0 0 0-3.793 23.387c.6.111.82-.261.82-.577v-2.234c-3.338.726-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.419-1.305.762-1.605-2.665-.304-5.466-1.332-5.466-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 6.004 0c2.292-1.552 3.298-1.23 3.298-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.91 1.235 3.221 0 4.61-2.805 5.624-5.475 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.216.694.825.576A12.001 12.001 0 0 0 12 .297" />
+          </svg>
+          <span class="contact-label">GitHub</span>
+        </a>
+      </li>
+      <li>
+        <a class="contact-link" href="https://x.com/sajadxdp" aria-label="X profile @sajadxdp">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+            <path d="M18.901 1.153h3.68l-8.038 9.188 9.46 12.506h-7.406l-5.8-7.583-6.64 7.583h-3.68l8.59-9.815L0 1.153h7.594l5.243 6.932zm-1.291 19.493h2.039L6.486 3.239H4.298z" />
+          </svg>
+          <span class="contact-label">@sajadxdp</span>
+        </a>
+      </li>
     </ul>
   </main>
 </BaseLayout>
