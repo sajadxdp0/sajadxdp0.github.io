@@ -18,9 +18,9 @@ Project descriptions and links live in `src/components/ProjectRows.astro`. The h
 - GitHub: <https://github.com/sajadxdp0>
 - X: <https://x.com/sajadxdp>
 
-## ASCII wallpapers
+## Cloud Drift backdrop
 
-The footer wallpaper picker uses the eight animated SVG scenes from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers), vendored under `public/wallpapers/` with their MIT license. Moonlit is the default; choosing **Off** restores the original CSS night-sky backdrop. The selection is saved in local storage, and animated wallpapers are disabled when reduced motion is requested.
+The site uses the Cloud Drift scene from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers), vendored under `public/wallpapers/` with its MIT license. The animated SVG is the default; a static WebP frame is served when reduced motion is requested. There is no client-side wallpaper picker.
 
 The Claude Code plugin is installed at project scope through `.claude/settings.json`. Install it again with:
 

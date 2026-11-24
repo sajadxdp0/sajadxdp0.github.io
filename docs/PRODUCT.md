@@ -2,7 +2,7 @@
 
 Static portfolio at <https://sajadxdp0.github.io/>.
 
-Built with Astro, HTML, and CSS. Astro renders each page at build time. A small progressive-enhancement script powers the wallpaper picker and saves the visitor's choice in local storage.
+Built with Astro, HTML, and CSS. Astro renders each page at build time. The site has no client-side JavaScript.
 
 ## Pages
 
@@ -12,11 +12,11 @@ Built with Astro, HTML, and CSS. Astro renders each page at build time. A small 
 - `src/pages/freightpilot-ai.astro` — FreightPilot AI project notes.
 - `src/pages/404.astro` — no-index not-found page.
 
-`src/components/ProjectRows.astro` is the source for project descriptions and links on the Projects page. `src/layouts/BaseLayout.astro` defines shared metadata, navigation, the wallpaper picker, and the footer.
+`src/components/ProjectRows.astro` is the source for project descriptions and links on the Projects page. `src/layouts/BaseLayout.astro` defines shared metadata, navigation, the Cloud Drift backdrop, and the footer.
 
-## Wallpapers
+## Wallpaper
 
-`src/scripts/wallpapers.ts` powers the footer picker. The eight animated SVG scenes in `public/wallpapers/` come from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers) under the MIT license. Moonlit is the default; **Off** restores the CSS night-sky backdrop. The choice persists in local storage. Reduced-motion users get the static backdrop and a disabled picker.
+The fixed Cloud Drift scene in `public/wallpapers/` comes from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers) under the MIT license. The animated SVG is the default; a static WebP frame is served when reduced motion is requested. There is no client-side picker or persisted selection.
 
 ## Run locally
 

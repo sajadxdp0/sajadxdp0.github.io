@@ -34,16 +34,17 @@ const currentYear = new Date().getFullYear();
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{title}</title>
   </head>
-  <body>
-    <div class="site-backdrop" data-scene="night-sky" aria-hidden="true">
-      <img
-        id="wallpaper-image"
-        src="/wallpapers/moonlit.svg"
-        alt=""
-        fetchpriority="high"
-        decoding="async"
-        hidden
-      />
+  <body data-wallpaper="clouds">
+    <div class="site-backdrop" data-scene="cloud-drift" aria-hidden="true">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="/wallpapers/cloud-drift-static.webp" type="image/webp" />
+        <img
+          src="/wallpapers/cloud-drift.svg"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
     </div>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
@@ -57,23 +58,6 @@ const currentYear = new Date().getFullYear();
     <slot />
     <footer class="site-footer">
       <p>&copy; <time>{currentYear}</time> Sajad</p>
-      <label class="wallpaper-control" id="wallpaper-control" hidden>
-        <span>Wallpaper</span>
-        <select id="wallpaper-select" aria-label="Choose an ASCII wallpaper">
-          <option value="clawd">Claude Code</option>
-          <option value="clouds">Cloud Drift</option>
-          <option value="honu">Honu Lagoon</option>
-          <option value="koiPond">Koi Pond</option>
-          <option value="jellyfish">Jellyfish</option>
-          <option value="paperBoats">Paper Boats</option>
-          <option value="fireflies">Fireflies</option>
-          <option value="moonlit" selected>Moonlit</option>
-          <option value="off">Off</option>
-        </select>
-      </label>
     </footer>
-    <script>
-      import "../scripts/wallpapers";
-    </script>
   </body>
 </html>
