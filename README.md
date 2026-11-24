@@ -20,7 +20,7 @@ Project descriptions and links live in `src/components/ProjectRows.astro`. The h
 
 ## Cloud Drift backdrop
 
-The site uses the Cloud Drift scene from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers), vendored under `public/wallpapers/` with its MIT license. The animated SVG is the default; a static WebP frame is served when reduced motion is requested. There is no client-side wallpaper picker.
+The site uses the Cloud Drift scene from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers), vendored under `public/wallpapers/` with its MIT license. Responsive static AVIF/WebP frames keep the backdrop smooth on mobile and desktop without the CPU cost of the animated SVG. There is no client-side wallpaper picker.
 
 The Claude Code plugin is installed at project scope through `.claude/settings.json`. Install it again with:
 

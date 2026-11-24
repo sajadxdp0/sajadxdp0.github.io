@@ -46,7 +46,6 @@ body {
   z-index: 0;
   inset: 0;
   overflow: hidden;
-  isolation: isolate;
   background:
     radial-gradient(ellipse at 84% 8%, rgb(255 255 255 / 4%), transparent 28rem),
     linear-gradient(135deg, transparent 0 73%, rgb(255 255 255 / 5%) 73.1% 73.2%, transparent 73.3%),
@@ -76,7 +75,6 @@ body {
   background:
     radial-gradient(ellipse at 82% 14%, rgb(125 211 252 / 22%), transparent 30rem),
     radial-gradient(ellipse at 94% 44%, rgb(59 130 246 / 14%), transparent 24rem);
-  mix-blend-mode: screen;
   pointer-events: none;
 }
 

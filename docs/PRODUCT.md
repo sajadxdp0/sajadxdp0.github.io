@@ -16,7 +16,7 @@ Built with Astro, HTML, and CSS. Astro renders each page at build time. The site
 
 ## Wallpaper
 
-The fixed Cloud Drift scene in `public/wallpapers/` comes from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers) under the MIT license. The animated SVG is the default; a static WebP frame is served when reduced motion is requested. There is no client-side picker or persisted selection.
+The fixed Cloud Drift scene in `public/wallpapers/` comes from [Handsher/ascii-wallpapers](https://github.com/Handsher/ascii-wallpapers) under the MIT license. Responsive static AVIF/WebP frames avoid the CPU cost of animating a full-viewport SVG. There is no client-side picker or persisted selection.
 
 ## Run locally
 
