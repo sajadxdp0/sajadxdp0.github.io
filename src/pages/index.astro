@@ -3,14 +3,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout
   title="Sajad — Software Engineer"
-  description="I build cool things with code and AI."
+  description="I'm Sajad, a software engineer building useful tools across backend systems, data, and applied AI."
   page="about"
   canonical="https://sajadxdp0.github.io/"
 >
   <main id="main" tabindex="-1">
-    <section class="intro">
-      <h1>I'm a software engineer.</h1>
-      <p>I build cool things with code and AI.</p>
+    <section class="intro" aria-labelledby="intro-title">
+      <h1 id="intro-title">I'm a software engineer.</h1>
+      <p class="intro-lead">I build cool things with code and AI.</p>
+      <div class="intro-details">
+        <p>I'm Sajad. I like turning complicated problems into simple, useful tools. Most of my work lives where backend systems, data, and applied AI meet.</p>
+        <p>I care about building software that feels understandable, reliable, and genuinely useful—not just impressive in a demo.</p>
+      </div>
+      <p class="intro-link"><a href="/projects.html">See what I'm building <span aria-hidden="true">→</span></a></p>
     </section>
   </main>
 </BaseLayout>
