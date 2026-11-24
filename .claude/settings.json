@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "ascii-wallpapers": {
+      "source": {
+        "source": "github",
+        "repo": "handsher/ascii-wallpapers"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "ascii-wallpapers@ascii-wallpapers": true
+  }
+}

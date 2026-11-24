@@ -1,28 +1,19 @@
 ---
-interface Props {
-  selectedOnly?: boolean;
-}
-
-const { selectedOnly = false } = Astro.props;
-
 const projects = [
   {
     name: "HookFlow",
     href: "https://github.com/sajadxdp0/hookflow",
     description: "Webhook delivery with retries, signatures, and dead-letter replay.",
-    selected: true,
   },
   {
     name: "Lexora",
     href: "https://github.com/sajadxdp0/lexora-ai",
     description: "Document Q&A with cited answers and per-user retrieval.",
-    selected: true,
   },
   {
     name: "neuDB",
     href: "https://github.com/sajadxdp0/neudb",
     description: "Embedded Python database with JSON tables and semantic search.",
-    selected: true,
     links: [{ label: "PyPI", href: "https://pypi.org/project/neudb/" }],
   },
   {
@@ -38,18 +29,21 @@ const projects = [
     links: [{ label: "Live site", href: "https://esencelab.vercel.app" }],
   },
   {
+    name: "FreightPilot AI",
+    href: "https://github.com/sajadxdp0/FreightPilot-AI",
+    description: "A sandbox prototype exploring evidence-grounded freight booking assistance.",
+    links: [{ label: "Project notes", href: "/freightpilot-ai.html" }],
+  },
+  {
     name: "Helium for Android",
     href: "https://github.com/sajadxdp0/helium-android",
     description: "Android browser built with Compose, GeckoView, and Rust.",
   },
 ];
 
-const visibleProjects = selectedOnly
-  ? projects.filter((project) => project.selected)
-  : projects;
 ---
 <ul class="project-list">
-  {visibleProjects.map((project) => (
+  {projects.map((project) => (
     <li>
       <a class="project-name" href={project.href}>{project.name}</a>
       <p>{project.description}</p>

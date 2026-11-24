@@ -44,6 +44,7 @@ body {
   position: fixed;
   z-index: 0;
   inset: 0;
+  overflow: hidden;
   background:
     radial-gradient(ellipse at 84% 8%, rgb(255 255 255 / 4%), transparent 28rem),
     linear-gradient(135deg, transparent 0 73%, rgb(255 255 255 / 5%) 73.1% 73.2%, transparent 73.3%),
@@ -53,6 +54,32 @@ body {
   pointer-events: none;
   -webkit-mask-image: radial-gradient(ellipse 68% 55% at 82% 6%, #000 0%, transparent 100%);
   mask-image: radial-gradient(ellipse 68% 55% at 82% 6%, #000 0%, transparent 100%);
+}
+
+.site-backdrop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: var(--wallpaper-opacity, 0.72);
+}
+
+.site-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(0 0 0 / 82%), transparent 32%),
+    linear-gradient(90deg, rgb(0 0 0 / 92%), rgb(0 0 0 / 58%) 52%, rgb(0 0 0 / 12%));
+  pointer-events: none;
+}
+
+body[data-wallpaper]:not([data-wallpaper="off"]) .site-backdrop { opacity: 1; }
+body[data-wallpaper="clouds"] { --wallpaper-opacity: 0.48; }
+body[data-wallpaper="clouds"] .site-backdrop::after { background: rgb(0 0 0 / 58%); }
+body[data-wallpaper="off"] .site-backdrop::after {
+  background: linear-gradient(90deg, rgb(0 0 0 / 72%), transparent 70%);
 }
 
 .site-header, main, .site-footer { position: relative; z-index: 1; width: min(100%, var(--content)); margin-inline: auto; }
@@ -79,6 +106,17 @@ main { flex: 1; padding-block: 2.5rem 4rem; }
 h1, h2 { color: var(--text); font-weight: 500; line-height: 1.35; }
 h1 { margin: 0; font-size: 1.8rem; }
 h2 { margin: 0 0 1rem; font-size: 1.2rem; }
+.article-main { max-width: 48rem; }
+.article-main article { max-width: 42rem; }
+.article-header { margin-bottom: 2rem; }
+.article-kicker { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.9rem; }
+.article-header h1 { max-width: 18ch; }
+.article-header > p:last-child { margin: 0.75rem 0 0; color: var(--muted); }
+.article-main section { margin-block: 1.75rem; }
+.article-main section h2 { margin-bottom: 0.5rem; }
+.article-main section p { margin: 0.5rem 0; }
+.article-source { margin-top: 2rem; font-weight: 500; }
+.article-back { font-size: 0.9rem; }
 .intro p { margin: 0.5rem 0 0; }
 .project-list, .contact-list { padding-inline-start: 1.25rem; }
 .project-list { margin: 1rem 0 0; }
@@ -93,8 +131,12 @@ h2 { margin: 0 0 1rem; font-size: 1.2rem; }
 .contact-icon { width: 1.1rem; height: 1.1rem; flex: none; color: var(--muted); }
 .contact-link:hover .contact-icon { color: var(--text); }
 .contact-link:hover .contact-label { text-decoration: underline; text-underline-offset: 0.18em; }
-.site-footer { padding-block: 1rem 1.5rem; border-top: 1px solid var(--line); font-size: 0.875rem; }
+.site-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem 1.5rem; padding-block: 0.5rem 1.5rem; border-top: 1px solid var(--line); font-size: 0.875rem; }
 .site-footer p { margin: 0; }
+.wallpaper-control { display: inline-flex; align-items: center; gap: 0.65rem; color: var(--muted); font-size: 0.8rem; }
+.wallpaper-control select { min-height: 44px; max-width: 10rem; border: 1px solid var(--line); border-radius: 0; padding: 0 0.55rem; background: #0a0a0a; color: var(--text); font: inherit; }
+.wallpaper-control select:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
+.wallpaper-control select:disabled { cursor: not-allowed; opacity: 0.55; }
 
 @media (max-width: 460px) {
   .site-header { min-height: 3.5rem; }
@@ -105,6 +147,14 @@ h2 { margin: 0 0 1rem; font-size: 1.2rem; }
     -webkit-mask-image: none;
     mask-image: none;
   }
+  .site-backdrop img { opacity: 0.46; }
+  body[data-wallpaper="clouds"] .site-backdrop img { opacity: 0.32; }
+  .site-backdrop::after {
+    background:
+      linear-gradient(180deg, rgb(0 0 0 / 88%), rgb(0 0 0 / 30%) 55%, rgb(0 0 0 / 78%)),
+      linear-gradient(90deg, rgb(0 0 0 / 72%), transparent);
+  }
+  body[data-wallpaper="clouds"] .site-backdrop::after { background: rgb(0 0 0 / 66%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="FreightPilot AI — A Safer Freight-Booking Sandbox"
+  description="Notes on FreightPilot AI: an evidence-first freight-booking sandbox prototype, its implemented domain foundation, and the workflow still being explored."
+  page={null}
+  canonical="https://sajadxdp0.github.io/freightpilot-ai.html"
+>
+  <main id="main" tabindex="-1" class="article-main">
+    <article>
+      <header class="article-header">
+        <p class="article-kicker">Project notes</p>
+        <h1>FreightPilot AI: building a safer freight-booking sandbox</h1>
+        <p>A prototype about making freight booking assistance inspectable before it is allowed to act.</p>
+      </header>
+
+      <section aria-labelledby="why-heading">
+        <h2 id="why-heading">Start with evidence</h2>
+        <p>Freight requests arrive as messy documents and messages, while a booking depends on details that must be right. FreightPilot AI explores a sandbox workflow that extracts candidate shipment fields with evidence attached, so a person can see where each value came from instead of trusting an unsupported answer.</p>
+      </section>
+
+      <section aria-labelledby="built-heading">
+        <h2 id="built-heading">What exists now</h2>
+        <p>The repository currently establishes the domain foundation: freight-oriented data structures and deterministic checks for validating proposed shipment details. This is prototype groundwork, not a complete freight-booking application; it is not presented as live or connected to carrier systems.</p>
+      </section>
+
+      <section aria-labelledby="direction-heading">
+        <h2 id="direction-heading">The workflow being explored</h2>
+        <p>The broader sandbox goal is to combine evidence-first extraction with deterministic validation, then show an exact proposed plan for human approval. Any browser interaction is intended to be fixed, local-only draft actions in a controlled browser—not autonomous booking. Verification should confirm expected state before proceeding, and fail-safe behavior should stop when evidence, checks, or page state do not match.</p>
+        <p>Those workflow goals describe the direction of the project, not features claimed as fully implemented. The boundary is deliberate: make proposed actions reviewable and keep approval with a person.</p>
+      </section>
+
+      <p class="article-source"><a href="https://github.com/sajadxdp0/FreightPilot-AI">View FreightPilot AI on GitHub</a></p>
+      <p class="article-back"><a href="/projects.html">Back to Projects</a></p>
+    </article>
+  </main>
+</BaseLayout>
