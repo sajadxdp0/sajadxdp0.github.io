@@ -20,6 +20,8 @@ The fixed Cloud Drift scene in `public/wallpapers/` comes from [Handsher/ascii-w
 
 ## Run locally
 
+Requires Node.js 22.23.4 or newer.
+
 ```bash
 npm ci
 npm run dev
@@ -35,7 +37,8 @@ Keep project summaries short and specific. List only technologies that distingui
 
 ```bash
 npm run build
+npm run check
 npm run preview
 ```
 
-Astro writes the static site to `dist/`. GitHub Actions deploys that directory to GitHub Pages when changes reach `main`.
+Astro writes the static site to `dist/`. `npm run check` validates metadata, internal links, sitemap coverage, CSS assets, and copied public files. GitHub Actions runs the check before deploying that directory to GitHub Pages when changes reach `main`.

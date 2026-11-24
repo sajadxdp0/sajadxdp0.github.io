@@ -47,13 +47,20 @@ Validate the plugin with:
 claude plugin validate ./claude-mods/night-sky
 ```
 
+## Fonts
+
+The site self-hosts Nerd Fonts-patched JetBrains Mono. Upstream attribution and the required OFL/MIT license notices are deployed from `public/assets/fonts/`.
+
 ## Run and build the site
+
+Requires Node.js 22.23.4 or newer.
 
 ```bash
 npm ci
 npm run dev
 npm run build
+npm run check
 npm run preview
 ```
 
-GitHub Actions deploys `dist/` to GitHub Pages when changes reach `main`.
+`npm run check` validates built metadata, internal links, sitemap coverage, CSS assets, and copied public files. GitHub Actions runs it before deploying `dist/` to GitHub Pages when changes reach `main`.

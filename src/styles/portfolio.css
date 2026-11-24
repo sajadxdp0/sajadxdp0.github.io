@@ -2,14 +2,14 @@
   font-family: "JetBrains Mono NF";
   src: url("/assets/fonts/jbmnf-regular.woff2") format("woff2");
   font-weight: 400;
-  font-display: swap;
+  font-display: optional;
 }
 
 @font-face {
   font-family: "JetBrains Mono NF";
   src: url("/assets/fonts/jbmnf-bold.woff2") format("woff2");
   font-weight: 700;
-  font-display: swap;
+  font-display: optional;
 }
 
 :root {
@@ -33,6 +33,7 @@ body {
   min-height: 100vh;
   min-height: 100svh;
   margin: 0;
+  padding-block: env(safe-area-inset-top) env(safe-area-inset-bottom);
   padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
   background: var(--bg);
   color: var(--muted);
@@ -45,12 +46,13 @@ body {
   z-index: 0;
   inset: 0;
   overflow: hidden;
+  isolation: isolate;
   background:
     radial-gradient(ellipse at 84% 8%, rgb(255 255 255 / 4%), transparent 28rem),
     linear-gradient(135deg, transparent 0 73%, rgb(255 255 255 / 5%) 73.1% 73.2%, transparent 73.3%),
     radial-gradient(circle, rgb(255 255 255 / 16%) 0.55px, transparent 0.8px);
   background-size: auto, auto, 20px 20px;
-  opacity: 0.5;
+  opacity: 1;
   pointer-events: none;
   -webkit-mask-image: radial-gradient(ellipse 68% 55% at 82% 6%, #000 0%, transparent 100%);
   mask-image: radial-gradient(ellipse 68% 55% at 82% 6%, #000 0%, transparent 100%);
@@ -58,6 +60,7 @@ body {
 
 .site-backdrop img {
   position: absolute;
+  z-index: 0;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -65,18 +68,26 @@ body {
   opacity: 0.48;
 }
 
-.site-backdrop::after {
+.site-backdrop::before {
   content: "";
   position: absolute;
+  z-index: 1;
   inset: 0;
   background:
-    linear-gradient(180deg, rgb(0 0 0 / 82%), transparent 32%),
-    linear-gradient(90deg, rgb(0 0 0 / 92%), rgb(0 0 0 / 58%) 52%, rgb(0 0 0 / 12%));
+    radial-gradient(ellipse at 82% 14%, rgb(125 211 252 / 22%), transparent 30rem),
+    radial-gradient(ellipse at 94% 44%, rgb(59 130 246 / 14%), transparent 24rem);
+  mix-blend-mode: screen;
   pointer-events: none;
 }
 
-body[data-wallpaper="clouds"] .site-backdrop { opacity: 1; }
-body[data-wallpaper="clouds"] .site-backdrop::after { background: rgb(0 0 0 / 58%); }
+.site-backdrop::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: rgb(0 0 0 / 58%);
+  pointer-events: none;
+}
 
 .site-header, main, .site-footer { position: relative; z-index: 1; width: min(100%, var(--content)); margin-inline: auto; }
 .site-header {
@@ -96,7 +107,7 @@ a:hover { text-decoration-color: currentColor; }
 a:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; }
 .brand, .site-nav a { text-decoration: none; }
 .skip-link { position: absolute; inset-inline-start: -9999px; }
-.skip-link:focus { position: fixed; z-index: 1; inset: 1rem auto auto 1rem; padding: 0.5rem 0.8rem; background: var(--text); color: var(--bg); }
+.skip-link:focus { position: fixed; z-index: 3; inset: max(1rem, env(safe-area-inset-top)) auto auto max(1rem, env(safe-area-inset-left)); padding: 0.5rem 0.8rem; background: var(--text); color: var(--bg); }
 
 main { flex: 1; padding-block: clamp(2rem, 5vw, 2.5rem) clamp(3rem, 7vw, 4rem); }
 h1, h2 { color: var(--text); font-weight: 500; line-height: 1.35; }
@@ -141,19 +152,13 @@ h2 { margin: 0 0 1rem; font-size: 1.2rem; }
   .site-header { min-height: 3.5rem; }
   .site-nav { gap: 0.75rem; font-size: 0.85rem; }
   .site-backdrop {
-    opacity: 0.65;
     background-size: auto, auto, 18px 18px;
     -webkit-mask-image: none;
     mask-image: none;
   }
-  .site-backdrop img { opacity: 0.46; }
-  body[data-wallpaper="clouds"] .site-backdrop img { opacity: 0.32; }
-  .site-backdrop::after {
-    background:
-      linear-gradient(180deg, rgb(0 0 0 / 88%), rgb(0 0 0 / 30%) 55%, rgb(0 0 0 / 78%)),
-      linear-gradient(90deg, rgb(0 0 0 / 72%), transparent);
-  }
-  body[data-wallpaper="clouds"] .site-backdrop::after { background: rgb(0 0 0 / 66%); }
+  .site-backdrop img { opacity: 0.32; }
+  .site-backdrop::before { opacity: 0.65; }
+  .site-backdrop::after { background: rgb(0 0 0 / 66%); }
 }
 
 @media (max-width: 360px) {
@@ -167,10 +172,5 @@ h2 { margin: 0 0 1rem; font-size: 1.2rem; }
   .site-footer { padding-block: 0.25rem 0.75rem; }
   .intro-details { margin-top: 0.75rem; }
   .intro-link { margin-top: 0.5rem; }
-  .site-backdrop img { opacity: 0.4; }
-  body[data-wallpaper="clouds"] .site-backdrop img { opacity: 0.3; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; }
+  .site-backdrop img { opacity: 0.3; }
 }
