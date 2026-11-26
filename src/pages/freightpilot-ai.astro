@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout
   title="FreightPilot AI — A Safer Freight-Booking Sandbox"
-  description="Notes on FreightPilot AI: an evidence-first freight-booking sandbox prototype, its implemented domain foundation, and the workflow still being explored."
+  description="How FreightPilot AI uses evidence, approval, and recovery controls to make a local freight-booking workflow inspectable."
   page={null}
   canonical="https://sajadxdp0.github.io/freightpilot-ai.html"
 >
@@ -12,23 +12,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <header class="article-header">
         <p class="article-kicker">Project notes</p>
         <h1>FreightPilot AI: building a safer freight-booking sandbox</h1>
-        <p>A prototype about making freight booking assistance inspectable before it is allowed to act.</p>
+        <p>A local prototype for making freight-booking assistance inspectable before it is allowed to act.</p>
       </header>
 
-      <section aria-labelledby="why-heading">
-        <h2 id="why-heading">Start with evidence</h2>
-        <p>Freight requests arrive as messy documents and messages, while a booking depends on details that must be right. FreightPilot AI explores a sandbox workflow that extracts candidate shipment fields with evidence attached, so a person can see where each value came from instead of trusting an unsupported answer.</p>
-      </section>
-
       <section aria-labelledby="built-heading">
-        <h2 id="built-heading">What exists now</h2>
-        <p>The repository currently establishes the domain foundation: freight-oriented data structures and deterministic checks for validating proposed shipment details. This is prototype groundwork, not a complete freight-booking application; it is not presented as live or connected to carrier systems.</p>
+        <h2 id="built-heading">What was built</h2>
+        <p>FreightPilot AI is a local sandbox built with FastAPI, SQLite, and a static dashboard. It takes synthetic emails and PDFs through a document-intake flow, records file hashes with SHA-256, and attaches evidence offsets to extracted shipment fields. Deterministic validation checks the candidate data, while an optional strict OpenAI-compatible adapter can provide reasoned operator review. The adapter is an integration point, not the authority for whether a draft may proceed.</p>
+        <p>The point is to keep the path from a messy request to a proposed draft visible. A reviewer can inspect the supporting evidence and validation results instead of accepting an unexplained answer.</p>
       </section>
 
-      <section aria-labelledby="direction-heading">
-        <h2 id="direction-heading">The workflow being explored</h2>
-        <p>The broader sandbox goal is to combine evidence-first extraction with deterministic validation, then show an exact proposed plan for human approval. Any browser interaction is intended to be fixed, local-only draft actions in a controlled browser—not autonomous booking. Verification should confirm expected state before proceeding, and fail-safe behavior should stop when evidence, checks, or page state do not match.</p>
-        <p>Those workflow goals describe the direction of the project, not features claimed as fully implemented. The boundary is deliberate: make proposed actions reviewable and keep approval with a person.</p>
+      <section aria-labelledby="safety-heading">
+        <h2 id="safety-heading">The central safety idea</h2>
+        <p>Approval is bound to one exact plan, not to a general instruction. The plan hash is tied to the target record, its before-values, and its revision. An operator first reviews the reasoned proposal; a second demo identity must then approve it within 30 minutes. If the target or revision changes, that approval cannot silently carry over.</p>
+        <p>Execution is deliberately narrow: a fixed Playwright page object logs into a dedicated demo TMS through a loopback-only origin and edits only allowlisted draft fields. It does not get a general-purpose browser tool or permission to invent actions. Approval remains with people, and the software can stop rather than improvise.</p>
+      </section>
+
+      <section aria-labelledby="workflow-heading">
+        <h2 id="workflow-heading">The local workflow</h2>
+        <p>A request enters as synthetic source material. Intake produces evidence-linked fields, deterministic checks surface problems, and the adapter can explain a proposed draft for operator review. After the second approval, the worker takes an atomic execution lease and drives the known demo-TMS workflow. Per-action checkpoints and screenshots record progress, and read-back verifies the resulting state rather than treating a submitted form as success.</p>
+        <p>This is a complete local loop, not a claim that real freight systems are connected.</p>
+      </section>
+
+      <section aria-labelledby="recovery-heading">
+        <h2 id="recovery-heading">Recovery and verification</h2>
+        <p>Browser automation fails in ways that ordinary request handling does not: a save can succeed after its response is lost, a layout can change, or a worker can restart between steps. FreightPilot persists its execution state, prevents overlapping workers with a lease, and reconciles the actual demo-TMS state before resuming. Reconciliation comes before retrying the remaining action.</p>
+        <p>The real-browser acceptance scenarios cover the happy path, a lost save response, and a changed-layout stop followed by recovery. Controlled failure injection exercises the recovery paths. These cases test whether the system notices uncertainty and responds safely, not just whether a script can click through a page.</p>
+      </section>
+
+      <section aria-labelledby="practice-heading">
+        <h2 id="practice-heading">Lessons from loop and Fable-inspired practice</h2>
+        <p>The engineering follows small, inspectable loops: observe evidence, propose a bounded action, require approval, act through a fixed interface, then verify. Fable-inspired browser practice reinforces the value of page objects and stable action boundaries over free-form interaction. The broader lesson is that agentic convenience and operational control reinforce each other when each step has a clear precondition, checkpoint, and stop condition.</p>
+        <p>Evaluation is offline and synthetic: 60 cases exercise the domain flow without presenting invented accuracy figures. The <a href="https://github.com/sajadxdp0/FreightPilot-AI/blob/main/evals/reports/report.json">repository evaluation report</a> contains the detailed results.</p>
+      </section>
+
+      <section aria-labelledby="limits-heading">
+        <h2 id="limits-heading">Honest limitations</h2>
+        <p>This is not production freight software. There is no live inbox or TMS integration, and no autonomous booking, release, payment, cancellation, deletion, or sending. Production authentication and tenancy, OCR, PostgreSQL, Redis, and Celery are outside the prototype. SQLite and synchronous execution are intentional local-prototype choices, not a production scaling design. The safety claims apply to the constrained sandbox workflow; they are not evidence of full-spec production readiness.</p>
       </section>
 
       <p class="article-source"><a href="https://github.com/sajadxdp0/FreightPilot-AI">View FreightPilot AI on GitHub</a></p>
